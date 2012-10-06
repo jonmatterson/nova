@@ -12,7 +12,7 @@
 <?php if (isset($msg_error)): ?>
 	<?php echo $msg_error;?>
 <?php else: ?>
-	<ul class="none margin0 padding0">
+	<ul class="none margin0 padding0 lispacing1">
 		
 	<?php foreach ($depts as $value): ?>
 		<li>

@@ -2,8 +2,9 @@
 
 <?php echo text_output($header, 'h1', 'page-head');?>
 
-<?php echo text_output($msg_welcome);?>
-<br>
+<div class="index-msg-welcome">
+	<?php echo text_output($msg_welcome);?>
+</div>
 
 <?php if (count($lists) > 1): ?>
 	<div id="tabs">

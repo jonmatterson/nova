@@ -6,6 +6,10 @@
 
 <?php echo text_output($msg_credits_perm);?>
 
-<br /> <hr /> <br />
+<?php if(strlen(trim($msg_credits)) > 0): ?>
 
-<?php echo text_output($msg_credits);?>
+	<hr />
+
+	<?php echo text_output($msg_credits);?>
+
+<?php endif;

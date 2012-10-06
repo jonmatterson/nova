@@ -17,8 +17,8 @@
 	</p>
 	<p>
 		<kbd><?php echo $label['timezone'];?></kbd>
-		<?php echo $timezone;?><br>
-		<span class="fontSmall gray bold"><?php echo $timezone_span;?></span>
+		<?php echo $timezone;?>
+		<div class="fontSmall gray bold"><?php echo $timezone_span;?></div>
 	</p>
 	
 	<div id="tabs">
@@ -33,7 +33,6 @@
 		
 		<!-- BASIC INFO -->
 		<div id="one">
-			<br>
 			<?php if ( ! empty($dob)): ?>
 				<p>
 					<kbd><?php echo $label['dob'];?></kbd>
@@ -51,9 +50,11 @@
 			<?php if (count($im) > 0): ?>
 				<p>
 					<kbd><?php echo $label['im'];?></kbd>
+					<ul class="none">
 					<?php foreach ($im as $value): ?>
-						<?php echo $value;?><br>
+						<li><?php echo $value;?></li>
 					<?php endforeach;?>
+					</ul>
 				</p>
 			<?php endif;?>
 			
@@ -78,7 +79,6 @@
 		
 		<!-- STATS -->
 		<div id="two">
-			<br>
 			<p>
 				<kbd><?php echo $label['joined'];?></kbd>
 				<?php echo $join_date_time;?>
@@ -117,42 +117,43 @@
 		
 		<!-- CHARACTER INFO -->
 		<div id="three">
-			<br>
 			<p>
 				<kbd><?php echo $label['activechars'];?></kbd>
 				<?php if (isset($characters['active'])): ?>
 					<ul class="margin0 padding0 none">
 					<?php foreach ($characters['active'] as $a): ?>
 						<li>
-							<?php echo anchor('personnel/character/'.$a['id'], $a['name'], array('class' => 'bold'));?><br>
-							<p class="fontSmall gray">
-								<?php echo $label['activefor'] .' '. $a['active_time'];?><br>
-								<em><?php echo $a['active_date'];?></em>
-							</p>
+							<?php echo anchor('personnel/character/'.$a['id'], $a['name'], array('class' => 'bold'));?>
+							<div class="fontSmall gray">
+								<?php echo $label['activefor'] .' '. $a['active_time'];?>
+							</div>
+							<div class="fontSmall gray italic">
+								<?php echo $a['active_date'];?>
+							</div>
 						</li>
 					<?php endforeach; ?>
 					</ul>
 				<?php else: ?>
 					<?php echo text_output($label['none'], 'span', 'orange bold');?>
 				<?php endif;?>
-			</p><br>
+			</p>
 			
 			<p>
 				<kbd><?php echo $label['npcs'];?></kbd>
 				<?php if (isset($characters['npcs'])): ?>
 					<?php foreach ($characters['npcs'] as $n): ?>
-						<?php echo anchor('personnel/character/'.$n['id'], $n['name'], array('class' => 'bold'));?><br>
+						<?php echo anchor('personnel/character/'.$n['id'], $n['name'], array('class' => 'bold'));?>
 					<?php endforeach; ?>
 				<?php else: ?>
 					<?php echo text_output($label['none'], 'span', 'orange bold');?>
 				<?php endif;?>
-			</p><br>
+			</p>
 			
 			<p>
 				<kbd><?php echo $label['inactivechars'];?></kbd>
 				<?php if (isset($characters['inactive'])): ?>
 					<?php foreach ($characters['inactive'] as $i): ?>
-						<?php echo anchor('personnel/character/'.$i['id'], $i['name'], array('class' => 'bold'));?><br>
+						<?php echo anchor('personnel/character/'.$i['id'], $i['name'], array('class' => 'bold'));?>
 					<?php endforeach; ?>
 				<?php else: ?>
 					<?php echo text_output($label['none'], 'span', 'orange bold');?>
@@ -162,7 +163,6 @@
 		
 		<!-- RANK HISTORY -->
 		<div id="four">
-			<br>
 			<?php if (is_array($rank_history) and count($rank_history) > 0): ?>
 				<?php foreach ($rank_history as $row): ?>
 					<h3><?php echo $row['name'];?></h3>
@@ -196,7 +196,6 @@
 		
 		<!-- POSTING INFO -->
 		<div id="five">
-			<br>
 			<?php echo text_output($label['missionposts'], 'h2');?>
 			<?php if (isset($posts)): ?>
 				<p class="bold"><?php echo anchor('personnel/viewposts/u/'. $userid, $label['viewposts']);?></p>
@@ -213,9 +212,8 @@
 						<tr>
 							<td>
 								<?php echo anchor('sim/viewpost/'. $p['post_id'], $p['title'], array('class' => 'bold'));?>
-								<br />
 								<span class="fontSmall gray">
-									<?php echo $label['by'] .' '. $p['authors'];?><br />
+									<?php echo $label['by'] .' '. $p['authors'];?>
 									<strong><?php echo $label['mission'];?>:</strong>
 									<?php echo anchor('sim/missions/id/'. $p['mission_id'], $p['mission']);?>
 								</span>
@@ -224,7 +222,7 @@
 						</tr>
 					<?php endforeach; ?>
 					</tbody>
-				</table><br />
+				</table>
 			<?php else: ?>
 				<?php echo text_output($label['noposts'], 'h3', 'orange');?>
 			<?php endif; ?>
@@ -245,7 +243,6 @@
 						<tr>
 							<td>
 								<?php echo anchor('sim/viewlog/'. $l['log_id'], $l['title'], array('class' => 'bold'));?>
-								<br />
 								<span class="fontSmall gray">
 									<?php echo $label['by'] .' '. $l['author'];?>
 								</span>
@@ -254,7 +251,7 @@
 						</tr>
 					<?php endforeach; ?>
 					</tbody>
-				</table><br />
+				</table>
 			<?php else: ?>
 				<?php echo text_output($label['nologs'], 'h3', 'orange');?>
 			<?php endif; ?>
@@ -263,7 +260,6 @@
 		<!-- AWARDS -->
 		<div id="six">
 			<?php if (isset($awards)): ?>
-				<br>
 				<table class="table100 zebra">
 					<thead>
 						<tr>
@@ -278,7 +274,6 @@
 						<tr>
 							<td class="col_30pct">
 								<?php echo anchor('sim/awards/'. $a['award_id'], $a['award'], array('class' => 'bold'));?>
-								<br />
 								<span class="fontSmall gray">
 									<?php echo $label['receivedby'] .' '. $a['name'];?>
 								</span>

@@ -54,7 +54,7 @@
 				<?php if ($edit_valid): ?>
 					<li><?php echo anchor('characters/bio/'.$character['id'], $label['edit']);?></li>
 				<?php endif;?>
-			</ul><br>
+			</ul>
 			
 			<?php if ($postcount > 0 or $logcount > 0 or $newscount > 0): ?>
 				<h4 class="page-subhead"><?php echo $label['stats'];?></h4>
@@ -71,7 +71,7 @@
 					<?php if ($newscount > 0): ?>
 						<li><strong><?php echo $newscount;?></strong> <?php echo $label['news_items'];?></li>
 					<?php endif;?>
-				</ul><br>
+				</ul>
 			<?php endif;?>
 			
 			<h4 class="page-subhead"><?php echo $label['last_post'];?></h4>
@@ -95,7 +95,7 @@
 						</p>
 					<?php endif; ?>
 				<?php endforeach; ?>
-			<?php endif;?><br>
+			<?php endif;?>
 			
 			<?php if (isset($tabs)): ?>
 				<div id="tabs">
@@ -122,7 +122,7 @@
 											</tr>
 										<?php endforeach; ?>
 										
-									</table><br />
+									</table>
 									<?php endif; ?>
 								<?php endforeach; ?>
 							<?php endif; ?>
