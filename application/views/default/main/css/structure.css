@@ -10,7 +10,7 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 | HEADINGS
 |---------------------------------------------------------------
 */
-h1, h2, h3, h4, p { margin: 0 0 10px 0; }
+h1, h2, h3, h4, p, ul, ol { margin: 0 0 10px 0; }
 h1, h2, h3, h4 { font-weight: bold; }
 
 h1 { font-size: 200%; }
@@ -210,6 +210,7 @@ ul.margin0, ol.margin0 { margin: 0; }
 ul.margin1 { margin: 1em; }
 ul.padding0 { padding: 0; }
 ul.padding1 { padding: .5em 1em; }
+ul.lispacing1 li { margin-bottom: 1em; }
 
 /*
 |---------------------------------------------------------------

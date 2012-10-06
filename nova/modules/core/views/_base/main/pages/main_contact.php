@@ -32,7 +32,7 @@
 			<kbd><?php echo $label['message'];?></kbd>
 			<?php echo form_error('message');?>
 			<?php echo form_textarea($inputs['message']);?>
-		</p><br />
+		</p>
 		
 		<p>
 			<?php echo form_button($button['submit']);?>

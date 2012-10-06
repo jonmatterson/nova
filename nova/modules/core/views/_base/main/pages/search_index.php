@@ -16,7 +16,7 @@
 	<p>
 		<kbd><?php echo $label['search_for'];?></kbd>
 		<?php echo form_input($inputs['search']);?>
-	</p><br />
+	</p>
 	
 	<p>
 		<?php echo form_button($inputs['submit']);?>

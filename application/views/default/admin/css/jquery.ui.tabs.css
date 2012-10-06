@@ -5,7 +5,7 @@
 }
 
 .ui-tabs .ui-tabs-nav {
-	margin: 0;
+	margin: 10px 0 0 0;
 	padding: 0;
 	height: 30px;
 }
@@ -80,7 +80,7 @@
 
 .ui-tabs .ui-tabs-panel {
 	display: block;
-	padding: .5em;
+	padding: 1em .5em .5em .5em;
 	clear: left;
 	border-width: 0;
 	border-top: 2px solid #76896e;

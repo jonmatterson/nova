@@ -4,8 +4,6 @@
 
 <?php echo text_output($msg);?>
 
-<p>&nbsp;</p>
-
 <?php echo form_open('main/join');?>
 	<?php echo form_hidden('agree', 'yes');?>
 	
