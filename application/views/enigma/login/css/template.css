@@ -1,0 +1,19 @@
+.login.content {
+	width: 400px;
+	margin: auto auto 12px auto;
+	border-radius: 0;
+	padding: 20px 20px 6px 20px;
+}
+
+.login.content > :first-child {
+	margin-top: 0;
+}
+
+.login form > p:last-child {
+	margin-bottom: 0;
+}
+
+.login .sub {
+	text-align: center;
+	margin-bottom: 6px;
+}

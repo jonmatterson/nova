@@ -29,33 +29,39 @@ $sec = 'login';
 		<script type="text/javascript" src="<?php echo $SKIN_ENIGMA->paths->get_inherited_url('jquery.blockUI.js'); ?>"></script>
 		
 		<?php echo $javascript;?>
+		
+		<?php echo $SKIN_ENIGMA->assets->get_link_tags($sec); ?>
+		
 	</head>
 	<body>
 		<h1 id="name"><?php echo $this->options['sim_name'];?></h1>
 		<section>
 			<div class="wrapper">
-				<div class="content">
+				
+				<div class="content login">
 					<?php echo $flash_message;?>
 					<?php echo $content;?>
+					<div class="sub">
+						<?php if ($this->uri->segment(2) and $this->uri->segment(2) !== 'index'): ?>
+							<strong><?php echo anchor('login/index', ucwords(lang('actions_login') .' '. lang('time_now')));?></strong>
+							&nbsp; | &nbsp;
+						<?php endif; ?>
+
+						<?php if ($this->uri->segment(2) !== 'reset_password'): ?>
+							<strong><?php echo anchor('login/reset_password', ucwords(lang('actions_reset') .' '. lang('labels_password')));?></strong>
+							&nbsp; | &nbsp;
+						<?php endif; ?>
+
+						<strong><?php echo anchor('main/index', ucfirst(lang('actions_back') .' '. lang('labels_to') .' '. lang('labels_site')));?></strong>
+					</div>
+					
 				</div>
-				
+
 				<footer>
-					<?php if ($this->uri->segment(2) and $this->uri->segment(2) !== 'index'): ?>
-						<strong><?php echo anchor('login/index', ucwords(lang('actions_login') .' '. lang('time_now')));?></strong>
-						&nbsp; | &nbsp;
-					<?php endif; ?>
-
-					<?php if ($this->uri->segment(2) !== 'reset_password'): ?>
-						<strong><?php echo anchor('login/reset_password', ucwords(lang('actions_reset') .' '. lang('labels_password')));?></strong>
-						&nbsp; | &nbsp;
-					<?php endif; ?>
-
-					<strong><?php echo anchor('main/index', ucfirst(lang('actions_back') .' '. lang('labels_to') .' '. lang('labels_site')));?></strong>
-					
-					<br><br>
-					
-					Powered by <strong><?php echo APP_NAME;?></strong>
+					Powered by <strong><?php echo APP_NAME;?></strong> from <a href="http://www.anodyne-productions.com" target="_blank">Anodyne Productions</a> | 
+					<?php echo anchor('main/credits', 'Site Credits');?>
 				</footer>
+				
 			</div>
 		</section>
 	</body>
