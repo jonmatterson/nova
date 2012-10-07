@@ -42,12 +42,13 @@ $sec = 'login';
 					<?php echo $flash_message;?>
 					<?php echo $content;?>
 					<div class="sub">
-						<?php if ($this->uri->segment(2) and $this->uri->segment(2) !== 'index'): ?>
+						
+						<?php if ($this->uri->segment(2) and $this->uri->segment(2) !== 'index' and $this->uri->segment(2) !== 'check_login'): ?>
 							<strong><?php echo anchor('login/index', ucwords(lang('actions_login') .' '. lang('time_now')));?></strong>
 							&nbsp; | &nbsp;
 						<?php endif; ?>
 
-						<?php if ($this->uri->segment(2) !== 'reset_password'): ?>
+						<?php if ($this->uri->segment(2) !== 'reset_password' and $this->uri->segment(2) !== 'check_login'): ?>
 							<strong><?php echo anchor('login/reset_password', ucwords(lang('actions_reset') .' '. lang('labels_password')));?></strong>
 							&nbsp; | &nbsp;
 						<?php endif; ?>
