@@ -10,18 +10,20 @@ class Skin_Enigma_Assets
 									'charset' => 'utf-8');
 	public $inherited_link_files = array(
 										'admin' => array('structure.css',
-														'skin.css',
-														'jquery.ui.tabs.css'),
+														'skin.css'),
 										'login' => array('structure.css',
 														'skin.css'),
 										'main'	=> array('structure.css',
-														'skin.css',
-														'jquery.ui.tabs.css'),
+														'skin.css'),
 										'wiki'  => array('structure.css',
 														'skin.css',
-														'wiki.css',
-														'jquery.ui.tabs.css')
+														'wiki.css')
 										);
+	
+	public $link_files = array(
+								'common' => array('template.css','color.css','jquery.ui.tabs.css'),
+								'main'   => array('structure.css')
+								);
 	
 	public function get_link_tag($name, $sec = false, $which = Skin_Enigma_Paths::SKIN)
 	{
@@ -36,6 +38,18 @@ class Skin_Enigma_Assets
 		if($sec && isset($this->inherited_link_files[$sec]))
 			foreach($this->inherited_link_files[$sec] as $file)
 				$tags .= $this->get_link_tag($file, $sec, Skin_Enigma_Paths::SKIN_INHERITED);
+		return $tags;
+	}
+	
+	public function get_link_tags($sec = false, $include_common = true)
+	{
+		$tags = '';
+		if($include_common && isset($this->link_files['common']))
+			foreach($this->link_files['common'] as $file)
+				$tags .= $this->get_link_tag($file, 'common', Skin_Enigma_Paths::SKIN);
+		if($sec && isset($this->link_files[$sec]))
+			foreach($this->link_files[$sec] as $file)
+				$tags .= $this->get_link_tag($file, $sec, Skin_Enigma_Paths::SKIN);
 		return $tags;
 	}
 }
