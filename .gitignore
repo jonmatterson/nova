@@ -4,18 +4,13 @@ application/assets/images/*/
 application/cache/
 application/logs/
 application/modules/
-application/views/
 
 application/config/database.php
 
-!application/views/default/*
-!application/views/titan/*
+application/views/default/*
+application/views/titan/*
 !application/views/_base_override/*
 !application/views/_mobile/*
-
-application/assets/common/*
-
-app/*
 
 # General
 *~
