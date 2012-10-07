@@ -10,8 +10,17 @@ header, header .wrapper  {
 	background-color: inherit;
 }
 
+header .wrapper {
+	/*background-image: url();*/
+}
+
+header .signin-container {
+	height: 139px;
+}
+
 header {
 	border-bottom: 0px;
+	height: 200px;
 }
 
 #menu .nav-main ul li a {
@@ -69,8 +78,9 @@ header {
 	background: -ms-linear-gradient(top,  #e0e0e0 0%,#d3d3d3 16%,#f4f4f4 100%); /* IE10+ */
 	background: linear-gradient(to bottom,  #e0e0e0 0%,#d3d3d3 16%,#f4f4f4 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e0e0e0', endColorstr='#f4f4f4',GradientType=0 ); /* IE6-9 */
-	margin-bottom: 0;
+	margin: 0;
 	overflow: auto;
+	padding: 0;
 	border-bottom: 1px solid #999;
 }
 
@@ -94,8 +104,10 @@ header {
 } 
 
 #container .nav-section ul li {
-	border-right: 1px solid #999;
-	border-left: 1px solid #ccc;
+	border-right: 1px solid #aaa;
+	border-left: 1px solid #d1d1d1;
+	margin: 0;
+	padding: 0;
 }
 
 #container .nav-section ul li:hover {

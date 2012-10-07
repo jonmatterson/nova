@@ -82,6 +82,9 @@ $button_login = array(
 				}
 			});
 		</script>
+		
+		<?php echo $SKIN_ENIGMA->assets->get_link_tags($sec); ?>
+		
 	</head>
 	<body>
 		<noscript>
@@ -107,7 +110,9 @@ $button_login = array(
 		<?php endif;?>
 		
 		<header>
+			
 			<div class="wrapper">
+				
 				<div class="signin-container">
 					<?php if ( ! Auth::is_logged_in()): ?>
 						<div class="signin-panel corner-upper-left corner-lower-left corner-lower-right">
@@ -149,36 +154,43 @@ $button_login = array(
 						</div>
 					<?php endif;?>
 				</div>
-			
-				<div style="clear:both;"></div>
 				
 				<div id="menu">
-					<div class="nav-main">
+					<nav class="nav-main">
 						<?php echo $nav_main;?>
-					</div>
+					</nav>
 				</div>
+				
+				<div style="clear: both;"></div>
+				
 			</div>
+			
 		</header>
 		
 		<div class="wrapper">
-			<div id="body">
-				<div class="nav-sub">
+			
+			<div id="container">
+			
+				<div class="nav-section">
 					<?php echo $nav_sub;?>
 				</div>
-			
-				<div class="content">
+
+				<div id="content">
 					<?php echo $flash_message;?>
 					<?php echo $content;?>
 					<?php echo $ajax;?>
-				
+
 					<div style="clear:both;"></div>
 				</div>
 				
-				<footer>
-					Powered by <strong><?php echo APP_NAME;?></strong> from <a href="http://www.anodyne-productions.com" target="_blank">Anodyne Productions</a> | 
-					<?php echo anchor('main/credits', 'Site Credits');?>
-				</footer>
 			</div>
+
+			<footer>
+				Powered by <strong><?php echo APP_NAME;?></strong> from <a href="http://www.anodyne-productions.com" target="_blank">Anodyne Productions</a> | 
+				<?php echo anchor('main/credits', 'Site Credits');?>
+			</footer>
+			
 		</div>
+		
 	</body>
 </html>
