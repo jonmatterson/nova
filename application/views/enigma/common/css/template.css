@@ -165,3 +165,8 @@ footer {
 	margin-top: 6px;
 	margin-bottom: 12px;
 }
+
+ul, ol {
+	padding-top: 0;
+	padding-bottom: 0;
+}
