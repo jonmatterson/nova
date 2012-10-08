@@ -22,7 +22,8 @@ class Skin_Enigma_Assets
 	
 	public $link_files = array(
 								'common' => array('template.css','color.css','jquery.ui.tabs.css'),
-								'login'   => array('template.css')
+								'login'  => array('template.css'),
+								'main'   => array('pages.css')
 								);
 	
 	public function get_link_tag($name, $sec = false, $which = Skin_Enigma_Paths::SKIN)

@@ -50,6 +50,40 @@ select:focus {
 	color: #555;
 }
 
+button.button-signin {
+	font-size: 14px;
+	color: #49d2f0;
+	text-shadow: 0 1px 0 #000;
+	padding-bottom: 0;
+	background: #222; /* Old browsers */
+	background: -moz-linear-gradient(top,  #272727 0%, #111 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#272727), color-stop(100%,#111)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #272727 0%,#111 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #272727 0%,#111 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #272727 0%,#111 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #272727 0%,#111 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#272727', endColorstr='#111',GradientType=0 ); /* IE6-9 */
+	border-color: #333;
+	margin-left: 1px;
+	font-variant: inherit;
+	margin-top: 10px;
+}
+
+button.button-signin:hover {
+	background: #4f4f4f; /* Old browsers */
+	background: -moz-linear-gradient(top,  #4f4f4f 0%, #353535 82%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#4f4f4f), color-stop(82%,#353535)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #4f4f4f 0%,#353535 82%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #4f4f4f 0%,#353535 82%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #4f4f4f 0%,#353535 82%); /* IE10+ */
+	background: linear-gradient(to bottom,  #4f4f4f 0%,#353535 82%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4f4f4f', endColorstr='#353535',GradientType=0 ); /* IE6-9 */
+	border-color: #777;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
+}
+
 button,
 input.button-main {
     border-color: #444;
@@ -67,7 +101,6 @@ input.button-main {
 
 button:hover,
 button.button-main:hover,
-button.button-signin:hover,
 input.button-main:hover {
     border-color: #444;
     background: #a36161; /* Old browsers */
@@ -112,14 +145,6 @@ input.button-sec:hover {
 	cursor: pointer;
 }
 
-button.button-signin {
-    border-color: #a8b3a3;
-}
-
-button.button-signin:hover {
-    border-color: #a8b3a3;
-}
-
 button.button-small {
     color: #777;
 }
@@ -135,4 +160,13 @@ button.button-small:hover {
 	background: linear-gradient(to bottom,  #663333 1%,#562828 49%,#592a2a 50%,#774444 100%); /* W3C */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#663333', endColorstr='#774444',GradientType=0 ); /* IE6-9 */
 	cursor: pointer;
+}
+
+.signin-panel input[type="text"], .signin-panel input[type="password"] {
+	border: 1px solid #444 !important;
+}
+
+.signin-panel input[type="text"]:focus, .signin-panel input[type="password"]:focus {
+	background-color: #1a1a1a !important;
+	border: 1px solid #666 !important;
 }
