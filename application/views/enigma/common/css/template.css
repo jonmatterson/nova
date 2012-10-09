@@ -179,6 +179,14 @@ footer {
 	margin-bottom: 12px;
 }
 
+footer a {
+	color: #3ac;
+}
+
+footer a:hover {
+	color: #28a;
+}
+
 ul, ol {
 	padding-top: 0;
 	padding-bottom: 0;
