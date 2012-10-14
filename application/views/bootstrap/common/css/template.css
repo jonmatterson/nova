@@ -16,7 +16,7 @@ footer {
 	text-align: center;
 }
 
-h2:first-child {
+h2:first-child, h3:first-child {
 	margin-top: 0;
 }
 
@@ -35,6 +35,26 @@ h2:first-child {
 	width: 92%
 }
 
-#manifest .position {
+.section, #manifest .position {
 	margin-bottom: 12px;
+}
+
+.row-fluid.condensed [class*="span"]{
+	min-height: inherit;
+}
+
+.float-right {
+	float: right;
+}
+
+.float-left {
+	float: left;
+}
+
+.float-container {
+	overflow: hidden;
+}
+
+.italics {
+	font-style: italic;
 }
