@@ -5,13 +5,6 @@ include_once(dirname(__FILE__).'/global.php');
 // load the panel helper
 $this->load->helper('panel');
 
-// set up the locations of the icons
-$panel = array(
-	'inbox'		=> array('src' => APPFOLDER.'/views/default/main/images/panel-mail.png'),
-	'writing'	=> array('src' => APPFOLDER.'/views/default/main/images/panel-writing.png'),
-	'dashboard'	=> array('src' => APPFOLDER.'/views/default/main/images/panel-dashboard.png'),
-);
-
 $button_login = array(
 	'class' => 'button-signin',
 	'value' => 'submit',
@@ -47,6 +40,7 @@ $button_login = array(
 		<script type="text/javascript" src="<?php echo Theme_URL::js('bootstrap-collapse.js'); ?>"></script>
 		<script type="text/javascript" src="<?php echo Theme_URL::js('bootstrap-transition.js'); ?>"></script>
 		<script type="text/javascript" src="<?php echo Theme_URL::js('bootstrap-tab.js'); ?>"></script>
+		<script type="text/javascript" src="<?php echo Theme_URL::js('bootstrap-modal.js'); ?>"></script>
 		
 		<?php echo $javascript;?>
 		
@@ -94,34 +88,29 @@ $button_login = array(
 		</noscript>
 		
 		<?php if (Auth::is_logged_in()): ?>
-			<div id="panel" class="hidden">
-				<div class="panel-body">
-					<table class="table100">
-						<tbody>
-							<tr>
-								<td class="panel_1 align_top"><?php echo $panel_1;?></td>
-								<td class="panel_spacer"></td>
-								<td class="panel_2 align_top"><?php echo $panel_2;?></td>
-								<td class="panel_spacer"></td>
-								<td class="panel_3 align_top"><?php echo $panel_3;?></td>
-							</tr>
-						</tbody>
-					</table>
+			<div class="modal hide fade" id="dashboardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h3>Dashboard</h3>
+				</div>
+				<div class="modal-body">
+					<div class="row-fluid">
+						<div class="span4"><?php echo $panel_1;?></div>
+						<div class="span4"><?php echo $panel_2;?></div>
+						<div class="span4"><?php echo $panel_3;?></div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
 				</div>
 			</div>
 		<?php endif;?>
 		
 		<header>
 			
-			<div class="wrapper">
-				
-				<?php Theme_Includer::view('signin-panel'); ?>
-				
-				<nav>
-					<?php echo Theme_Transformer::nav_main($nav_main);?>
-				</nav>
-				
-			</div>
+			<nav>
+				<?php echo Theme_Transformer::nav_main($nav_main);?>
+			</nav>
 			
 		</header>
 		
@@ -130,7 +119,25 @@ $button_login = array(
 			<div class="row-fluid">
 			
 				<nav class="span3">
+					<?php Theme_Includer::view('signin-panel'); ?>
 					<?php echo Theme_Transformer::nav_sub($nav_sub);?>
+					<?php if ( ! Auth::is_logged_in()): ?>
+					<div>
+						<?php echo form_open('login/check_login');?>
+
+							<label class="control-label"><?php echo ucwords(lang('labels_email_address'));?></label>
+							<input type="text" name="email" class="span12">
+							<label class="control-label"><?php echo ucfirst(lang('labels_password'));?></label>
+							<input type="password" name="password" class="span12">
+							<div>
+							<label class="checkbox"><input id="remember" type="checkbox" name="remember" value="yes"><?php echo ucfirst(lang('actions_remember').' '.lang('labels_me'));?></label>
+							</div>
+							<input type="submit" class="btn btn-success section">
+							<span class="help-block"><?php echo anchor('login/reset_password', lang('login_forgot'));?></span>
+
+						<?php echo form_close();?>
+					</div>
+				<?php endif;?>
 				</nav>
 
 				<div class="span9">

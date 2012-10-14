@@ -1,42 +1,34 @@
+<?php
+
+// set up the locations of the icons
+$panel = array(
+	'inbox'		=> array('src' => APPFOLDER.'/views/default/main/images/panel-mail.png'),
+	'writing'	=> array('src' => APPFOLDER.'/views/default/main/images/panel-writing.png'),
+	'dashboard'	=> array('src' => APPFOLDER.'/views/default/main/images/panel-dashboard.png'),
+);
+
+?>
+
 <div>
-	<?php if ( ! Auth::is_logged_in()): ?>
-		<div>
-			<?php echo form_open('login/check_login');?>
-			<table>
-				<tbody>
-					<tr>
-						<td>
-							<?php echo ucwords(lang('labels_email_address'));?><br>
-							<input type="text" name="email" class="signin-panel-input">
-						</td>
-						<td>
-							<?php echo ucfirst(lang('labels_password'));?><br>
-							<input type="password" name="password" class="signin-panel-input">
-						</td>
-						<td class="align_bottom"><?php echo form_button($button_login);?></td>
-					</tr>
-					<tr>
-						<td>
-							<input id="remember" type="checkbox" name="remember" value="yes">
-							<label for="remember"><?php echo ucfirst(lang('actions_remember').' '.lang('labels_me'));?></label>
-						</td>
-						<td><?php echo anchor('login/reset_password', lang('login_forgot'));?></td>
-						<td></td>
-					</tr>
-				</tbody>
-			</table>
-			<?php echo form_close();?>
-		</div>
-	<?php else: ?>
-		<a href="<?php echo site_url('login/logout');?>">
-			<?php echo ucfirst(lang('actions_logout'));?>
-		</a>
-		<div>
+	<?php if (Auth::is_logged_in()): ?>
+		<div class="section">
 			<?php if (Auth::is_logged_in()): ?>
 				<?php echo panel_inbox(true, true, false, '(x)', img($panel['inbox']));?> &nbsp;
 				<?php echo panel_writing(true, true, false, '(x)', img($panel['writing']));?> &nbsp;
-				<?php echo panel_dashboard(false, img($panel['dashboard']));?>
+				<a href="#dashboardModal" role="button" data-toggle="modal"><?php echo img($panel['dashboard']); ?></a>
 			<?php endif;?>
 		</div>
 	<?php endif;?>
 </div>
+		
+<?php if (Auth::is_logged_in()): ?>
+	<div class="modal hide fade" id="dashboardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-body">
+			<div class="row-fluid">
+				<div class="span4"><?php echo $panel_1;?></div>
+				<div class="span4"><?php echo $panel_2;?></div>
+				<div class="span4"><?php echo $panel_3;?></div>
+			</div>
+		</div>
+	</div>
+<?php endif;?>
