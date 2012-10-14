@@ -1,0 +1,8 @@
+skin: Bootstrap
+location: bootstrap
+credits: The Bootstrap skin provides a responsive Nova site powered by Twitter Bootstrap. It was created by Jon Matterson of Anodyne Productions. Edits are permissible provided the original credits remain intact.
+version: 2.0
+sections:
+  -
+    type: main
+    preview: preview-main.jpg
