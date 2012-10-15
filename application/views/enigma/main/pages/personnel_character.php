@@ -114,7 +114,11 @@
 									<?php if (isset($fields[$a['id']])): ?>
 										<table class="table100 zebra" cellspacing="0" cellpadding="3">
 											
-										<?php foreach ($fields[$a['id']] as $b): ?>
+										<?php foreach ($fields[$a['id']] as $b): 
+											
+													if(strlen(trim($b[value])) == 0)
+														continue;
+								?>
 											<tr>
 												<td class="cell-label align_top"><?php echo $b['label'];?></td>
 												<td class="cell-spacer"></td>
