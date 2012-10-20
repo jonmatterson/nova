@@ -34,7 +34,7 @@
 					<div class="span10"><?php echo $basic['status'] .' '. $label['mission'];?></div>
 				</div>
 				<?php echo table_row_spacer(3, 10);?>
-				<div class="row-fluid">
+				<div class="row-fluid section">
 					<div class="span2"><strong><?php echo $label['desc'];?></strong></div>
 					<div class="span10"><?php echo $basic['desc'];?></div>
 				</div>
@@ -66,7 +66,7 @@
 			<?php echo text_output($posts_header, 'h3', 'page-subhead');?>
 			<p><?php echo anchor('sim/listposts/mission/'. $mission, $label['view_all_posts'], array('class' => 'bold'));?></p>
 			<?php foreach ($posts as $post): ?>
-				<div class="row-fluid">
+				<div class="row-fluid section">
 					<div class="span4">
 						<?php echo $post['timeline'];?>
 						<br>
