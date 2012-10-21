@@ -1,0 +1,31 @@
+#manifest > div:first-child a[rel="tooltip"] {
+	font-size: 14px;
+	color: #fff;
+	border: 1px solid #555;
+	font-weight: bold;
+	padding: 6px;
+	background: #828282; /* Old browsers */
+	background: -moz-linear-gradient(top,  #828282 0%, #767676 44%, #6f6f6f 46%, #7a7a7a 99%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#828282), color-stop(44%,#767676), color-stop(46%,#6f6f6f), color-stop(99%,#7a7a7a)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #828282 0%,#767676 44%,#6f6f6f 46%,#7a7a7a 99%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #828282 0%,#767676 44%,#6f6f6f 46%,#7a7a7a 99%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #828282 0%,#767676 44%,#6f6f6f 46%,#7a7a7a 99%); /* IE10+ */
+	background: linear-gradient(to bottom,  #828282 0%,#767676 44%,#6f6f6f 46%,#7a7a7a 99%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#828282', endColorstr='#7a7a7a',GradientType=0 ); /* IE6-9 */
+	-moz-border-radius: 3px;
+	border-radius: 3px 3px 3px 3px;
+}
+
+#manifest > div:first-child a[rel="tooltip"]:hover {
+	background: #a7a7a7; /* Old browsers */
+	background: -moz-linear-gradient(top,  #a7a7a7 1%, #a0a0a0 54%, #a5a5a5 56%, #adadad 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#a7a7a7), color-stop(54%,#a0a0a0), color-stop(56%,#a5a5a5), color-stop(100%,#adadad)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top,  #a7a7a7 1%,#a0a0a0 54%,#a5a5a5 56%,#adadad 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top,  #a7a7a7 1%,#a0a0a0 54%,#a5a5a5 56%,#adadad 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top,  #a7a7a7 1%,#a0a0a0 54%,#a5a5a5 56%,#adadad 100%); /* IE10+ */
+	background: linear-gradient(to bottom,  #a7a7a7 1%,#a0a0a0 54%,#a5a5a5 56%,#adadad 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a7a7a7', endColorstr='#adadad',GradientType=0 ); /* IE6-9 */
+    border-color: #777;
+	color: #fff;
+	cursor: pointer;
+}
