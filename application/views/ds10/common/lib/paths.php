@@ -11,7 +11,7 @@ class Skin_Enigma_Paths
 	
 	public function __construct()
 	{
-		$this->skin_dir = 'enigma';
+		$this->skin_dir = 'ds10';
 		$this->inherit_skin_dir = 'default';
 		$this->skin_base_dir = APPFOLDER.'/views';
 		$this->inherit_skin_base_dir = APPFOLDER.'/views';

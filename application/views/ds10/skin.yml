@@ -1,0 +1,17 @@
+skin: DS10
+location: ds10
+credits: The Deep Space 10 skin was created for use on the Deep Space 10 (Task Force 47). It is a derivative of the Enigma Skin created for use on the USS Enigma (Task Force 93). Both the Enigma skin and the Deep Space 10 modification were created by Jon Matterson of Anodyne Productions. Edits are permissible provided the original credits remain intact.
+version: 2.0
+sections:
+  -
+    type: main
+    preview: preview-main.jpg
+  -
+    type: login
+    preview: preview-login.jpg
+  -
+    type: wiki
+    preview: preview-wiki.jpg
+  -
+    type: admin
+    preview: preview-admin.jpg

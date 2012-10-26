@@ -20,7 +20,7 @@ a:hover {
 }
 
 .signin-panel input[type="text"], .signin-panel input[type="password"] {
-	opacity: 0.6;
+	opacity: 0.8;
 	background-color: #111 !important;
 	color: #ccc !important;
 }
@@ -52,7 +52,7 @@ select:focus {
 
 button.button-signin {
 	font-size: 14px;
-	color: #49d2f0;
+	color: #e8bf83;
 	text-shadow: 0 1px 0 #000;
 	padding-bottom: 0;
 	background: #222; /* Old browsers */
