@@ -1,9 +1,9 @@
-version: 2.1.3
+version: 2.2.3
 version_major: 2
-version_minor: 1
+version_minor: 2
 version_update: 3
-severity: critical
+severity: minor
 notes: |
-  Nova 2.1.3 addresses several small bugs with dynamic forms and patches a security vulnerability in Nova.
-date: 05 November 2012
+  Nova 2.2.3 attempts to fix a long-standing issue for some users when updating to newer versions of Nova.
+date: 27 March 2013
 link: http://www.anodyne-productions.com/nova/index.php

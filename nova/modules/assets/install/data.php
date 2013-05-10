@@ -5,7 +5,7 @@
  * @package		Nova
  * @category	Install
  * @author		Anodyne Productions
- * @copyright	2012 Anodyne Productions
+ * @copyright	2013 Anodyne Productions
  */
 
 /**
@@ -2243,7 +2243,7 @@ $system_info = array(
 		'sys_uid' => random_string('alnum', 32),
 		'sys_install_date' => now(),
 		'sys_version_major' => 2,
-		'sys_version_minor' => 1,
+		'sys_version_minor' => 2,
 		'sys_version_update' => 3)
 );
 

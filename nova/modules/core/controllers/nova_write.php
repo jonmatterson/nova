@@ -5,7 +5,7 @@
  * @package		Nova
  * @category	Controller
  * @author		Anodyne Productions
- * @copyright	2011 Anodyne Productions
+ * @copyright	2013 Anodyne Productions
  */
 
 require_once MODPATH.'core/libraries/Nova_controller_admin.php';
@@ -128,7 +128,7 @@ abstract class Nova_write extends Nova_controller_admin {
 					: '<em>[[ '.strtoupper(lang('labels_no').' '.lang('labels_title')).' ]]</em>';
 				$data['posts_saved'][$i]['post_id'] = $p->post_id;
 				$data['posts_saved'][$i]['date'] = mdate($datestring, gmt_to_local($p->post_date, $this->timezone, $this->dst));
-				$data['posts_saved'][$i]['authors'] = $this->char->get_authors($p->post_authors);
+				$data['posts_saved'][$i]['authors'] = $this->char->get_authors($p->post_authors, true);
 				$data['posts_saved'][$i]['mission'] = $this->mis->get_mission($p->post_mission, 'mission_title');
 				$data['posts_saved'][$i]['mission_id'] = $p->post_mission;
 				$data['posts_saved'][$i]['saved'] = $p->post_saved;
@@ -232,7 +232,7 @@ abstract class Nova_write extends Nova_controller_admin {
 					: '<em>[[ '.strtoupper(lang('labels_no').' '.lang('labels_title')).' ]]</em>';
 				$data['posts'][$i]['post_id'] = $p->post_id;
 				$data['posts'][$i]['date'] = mdate($datestring, gmt_to_local($p->post_date, $this->timezone, $this->dst));
-				$data['posts'][$i]['authors'] = $this->char->get_authors($p->post_authors);
+				$data['posts'][$i]['authors'] = $this->char->get_authors($p->post_authors, true, true);
 				$data['posts'][$i]['mission'] = $this->mis->get_mission($p->post_mission, 'mission_title');
 				$data['posts'][$i]['mission_id'] = $p->post_mission;
 				
@@ -259,7 +259,7 @@ abstract class Nova_write extends Nova_controller_admin {
 					: '<em>[[ '.strtoupper(lang('labels_no').' '.lang('labels_title')).' ]]</em>';
 				$data['logs'][$i]['log_id'] = $l->log_id;
 				$data['logs'][$i]['date'] = mdate($datestring, gmt_to_local($l->log_date, $this->timezone, $this->dst));
-				$data['logs'][$i]['author'] = $this->char->get_character_name($l->log_author_character, true);
+				$data['logs'][$i]['author'] = $this->char->get_character_name($l->log_author_character, true, false, true);
 				
 				// get all the comments for the log
 				$comments = $this->logs->get_log_comments($l->log_id, 'activated', 'lcomment_date', 'desc');
@@ -320,7 +320,7 @@ abstract class Nova_write extends Nova_controller_admin {
 					: '<em>[[ '.strtoupper(lang('labels_no').' '.lang('labels_title')).' ]]</em>';
 				$data['posts_all'][$i]['post_id'] = $p->post_id;
 				$data['posts_all'][$i]['date'] = mdate($datestring, gmt_to_local($p->post_date, $this->timezone, $this->dst));
-				$data['posts_all'][$i]['authors'] = $this->char->get_authors($p->post_authors);
+				$data['posts_all'][$i]['authors'] = $this->char->get_authors($p->post_authors, true, true);
 				$data['posts_all'][$i]['mission'] = $this->mis->get_mission($p->post_mission, 'mission_title');
 				$data['posts_all'][$i]['mission_id'] = $p->post_mission;
 				
@@ -347,7 +347,7 @@ abstract class Nova_write extends Nova_controller_admin {
 					: '<em>[[ '.strtoupper(lang('labels_no').' '.lang('labels_title')).' ]]</em>';
 				$data['logs_all'][$i]['log_id'] = $l->log_id;
 				$data['logs_all'][$i]['date'] = mdate($datestring, gmt_to_local($l->log_date, $this->timezone, $this->dst));
-				$data['logs_all'][$i]['author'] = $this->char->get_character_name($l->log_author_character, true);
+				$data['logs_all'][$i]['author'] = $this->char->get_character_name($l->log_author_character, true, false, true);
 				
 				// get all the comments for the log
 				$comments = $this->logs->get_log_comments($l->log_id, 'activated', 'lcomment_date', 'desc');
@@ -372,7 +372,7 @@ abstract class Nova_write extends Nova_controller_admin {
 					: '<em>[[ '.strtoupper(lang('labels_no').' '.lang('labels_title')).' ]]</em>';
 				$data['news_all'][$i]['news_id'] = $n->news_id;
 				$data['news_all'][$i]['category'] = $n->newscat_name;
-				$data['news_all'][$i]['author'] = $this->char->get_character_name($n->news_author_character, true);
+				$data['news_all'][$i]['author'] = $this->char->get_character_name($n->news_author_character, true, false, true);
 				$data['news_all'][$i]['date'] = mdate($datestring, gmt_to_local($n->news_date, $this->timezone, $this->dst));
 				
 				// get all the comments for the news item
@@ -2272,6 +2272,7 @@ abstract class Nova_write extends Nova_controller_admin {
 				//$this->email->from($from_email, $from_name);
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. $subject);
 				$this->email->message($message);
 			break;
@@ -2315,6 +2316,7 @@ abstract class Nova_write extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. lang('email_subject_news_pending'));
 				$this->email->message($message);
 			break;
@@ -2353,6 +2355,7 @@ abstract class Nova_write extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. $subject);
 				$this->email->message($message);
 			break;
@@ -2394,10 +2397,11 @@ abstract class Nova_write extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. lang('email_subject_log_pending'));
 				$this->email->message($message);
 			break;
-				
+			
 			case 'post':
 				// set some variables
 				$subject = $data['mission'] ." - ". $data['title'];
@@ -2449,6 +2453,7 @@ abstract class Nova_write extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. $subject);
 				$this->email->message($message);
 			break;
@@ -2511,6 +2516,7 @@ abstract class Nova_write extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. $subject);
 				$this->email->message($message);
 			break;
@@ -2561,6 +2567,7 @@ abstract class Nova_write extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. lang('email_subject_post_pending'));
 				$this->email->message($message);
 			break;
@@ -2632,6 +2639,7 @@ abstract class Nova_write extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. $subject);
 				$this->email->message($message);
 			break;

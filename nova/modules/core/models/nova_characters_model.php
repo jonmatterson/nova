@@ -5,7 +5,7 @@
  * @package		Nova
  * @category	Model
  * @author		Anodyne Productions
- * @copyright	2011 Anodyne Productions
+ * @copyright	2013 Anodyne Productions
  */
 
 abstract class Nova_characters_model extends CI_Model {
@@ -75,26 +75,39 @@ abstract class Nova_characters_model extends CI_Model {
 		return $query;
 	}
 	
-	public function get_authors($character = '', $rank = TRUE)
+	/**
+	 * Display a string of authors.
+	 *
+	 * @param	string	Comma-separated list of character IDs
+	 * @param	bool	Show each character's rank?
+	 * @param	bool	Link to each character's bio?
+	 * @return	string
+	 */
+	public function get_authors($character = '', $showRank = true, $linkToBio = false)
 	{
+		// Explode the string into an array
 		$characters = explode(',', $character);
-		$characters_final = array();
+
+		// Setup an array for holding our final values
+		$charsFinal = array();
 		
 		foreach ($characters as $key)
 		{
-			$name = $this->get_character_name($key, TRUE);
+			// Get the caracter name
+			$name = $this->get_character_name($key, $showRank, false, $linkToBio);
 			
+			// Make sure we have a name
 			if ($name !== false)
 			{
-				$characters_final[] = $name;
+				$charsFinal[] = $name;
 			}
 		}
 		
-		if (count($characters_final) > 0)
+		if (count($charsFinal) > 0)
 		{
-			$character_string = implode(' &amp; ', $characters_final);
+			$charString = implode(' &amp; ', $charsFinal);
 		
-			return $character_string;
+			return $charString;
 		}
 		
 		return false;
@@ -255,13 +268,22 @@ abstract class Nova_characters_model extends CI_Model {
 		return $array;
 	}
 	
-	public function get_character_name($character = '', $rank = false, $short_rank = false)
+	/**
+	 * Get the character's name.
+	 *
+	 * @param	int		A character ID
+	 * @param	bool	Show the character's rank?
+	 * @param	bool	Show the character's short rank?
+	 * @param	bool	Show a link to the character's bio?
+	 * @return	string
+	 */
+	public function get_character_name($character = '', $showRank = false, $showShortRank = false, $showBioLink = false)
 	{
 		$this->db->from('characters');
 		
-		if ($rank == TRUE)
+		if ($showRank === true)
 		{
-			$this->db->join('ranks_'. GENRE, 'ranks_'. GENRE .'.rank_id = characters.rank');
+			$this->db->join('ranks_'.GENRE, 'ranks_'.GENRE .'.rank_id = characters.rank');
 		}
 		
 		$this->db->where('charid', $character);
@@ -272,8 +294,8 @@ abstract class Nova_characters_model extends CI_Model {
 		{
 			$item = $query->row();
 		
-			$array['rank'] = ($rank == TRUE) ? $item->rank_name : false;
-			$array['rank'] = ($short_rank == TRUE) ? $item->rank_short_name : $array['rank'];
+			$array['rank'] = ($showRank === true) ? $item->rank_name : false;
+			$array['rank'] = ($showShortRank === true) ? $item->rank_short_name : $array['rank'];
 			$array['first_name'] = $item->first_name;
 			$array['last_name'] = $item->last_name;
 			$array['suffix'] = $item->suffix;
@@ -287,6 +309,11 @@ abstract class Nova_characters_model extends CI_Model {
 			}
 		
 			$string = implode(' ', $array);
+
+			if ($showBioLink === true)
+			{
+				return anchor('personnel/character/'.$item->charid, $string);
+			}
 		
 			return $string;
 		}
@@ -341,13 +368,38 @@ abstract class Nova_characters_model extends CI_Model {
 		return $query;
 	}
 	
-	public function get_field_data($field = '', $character = '')
+	/**
+	 * Get the field data.
+	 *
+	 * @since	2.2
+	 * @param	mixed	The field ID or the field_name
+	 * @param	int		The character ID
+	 * @param	bool	Whether to return just the value or the whole query object
+	 * @return	mixed
+	 */
+	public function get_field_data($field = '', $character = '', $value_only = false)
 	{
+		if ( ! is_numeric($field))
+		{
+			$q = $this->db->get_where('characters_fields', array('field_name' => $field));
+			$r = ($q->num_rows() > 0) ? $q->row() : false;
+
+			$field = ($r !== false) ? $r->field_id : false;
+		}
+
 		$this->db->from('characters_data');
 		$this->db->where('data_char', $character);
 		$this->db->where('data_field', $field);
 		
 		$query = $this->db->get();
+
+		if ($value_only)
+		{
+			$row = ($query->num_rows() > 0) ? $query->row() : false;
+			$retval = ($row !== false) ? $row->data_value : false;
+
+			return $retval;
+		}
 		
 		return $query;
 	}

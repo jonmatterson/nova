@@ -5,7 +5,7 @@
  * @package		Nova
  * @category	Controller
  * @author		Anodyne Productions
- * @copyright	2011 Anodyne Productions
+ * @copyright	2013 Anodyne Productions
  */
 
 require_once MODPATH.'core/libraries/Nova_controller_admin.php';
@@ -1308,15 +1308,19 @@ abstract class Nova_manage extends Nova_controller_admin {
 			
 							$flash['status'] = 'success';
 							$flash['message'] = text_output($message);
+
+							$currentUser = $this->user->get_user($this->session->userdata('userid'));
 							
-							$email_data = array(
-								'message' => $content,
-								'email' => $item->docking_gm_email,
-								'name' => $item->docking_gm_name,
-								'sim' => $item->docking_sim_name
+							$emailData = array(
+								'message'	=> $content,
+								'email' 	=> $item->docking_gm_email,
+								'name' 		=> $item->docking_gm_name,
+								'sim' 		=> $item->docking_sim_name,
+								'fromEmail' => $currentUser->email,
+								'fromName'	=> $this->char->get_character_name($currentUser->main_char, true, true),
 							);
 							
-							$email = ($this->options['system_email'] == 'on') ? $this->_email('docking_accept', $email_data) : false;
+							$email = ($this->options['system_email'] == 'on') ? $this->_email('docking_accept', $emailData) : false;
 						}
 						else
 						{
@@ -1364,15 +1368,19 @@ abstract class Nova_manage extends Nova_controller_admin {
 			
 							$flash['status'] = 'success';
 							$flash['message'] = text_output($message);
+
+							$currentUser = $this->user->get_user($this->session->userdata('userid'));
 							
-							$email_data = array(
-								'message' => $content,
-								'email' => $item->docking_gm_email,
-								'name' => $item->docking_gm_name,
-								'sim' => $item->docking_sim_name
+							$emailData = array(
+								'message'	=> $content,
+								'email' 	=> $item->docking_gm_email,
+								'name' 		=> $item->docking_gm_name,
+								'sim' 		=> $item->docking_sim_name,
+								'fromEmail' => $currentUser->email,
+								'fromName'	=> $this->char->get_character_name($currentUser->main_char, true, true),
 							);
 							
-							$email = ($this->options['system_email'] == 'on') ? $this->_email('docking_reject', $email_data) : false;
+							$email = ($this->options['system_email'] == 'on') ? $this->_email('docking_reject', $emailData) : false;
 						}
 						else
 						{
@@ -3183,7 +3191,10 @@ abstract class Nova_manage extends Nova_controller_admin {
 				{
 					foreach ($subd->result() as $s)
 					{
-						$data['depts'][$d->dept_manifest]['items'][$s->dept_id] = $s->dept_name;
+						$data['depts'][$d->dept_manifest]['items'][$s->dept_id] = array(
+							'name' => $s->dept_name,
+							'desc' => $s->dept_desc,
+						);
 						$data['deptnames'][$s->dept_id] = $s->dept_name;
 					}
 				}
@@ -5144,6 +5155,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. $subject);
 				$this->email->message($message);
 			break;
@@ -5182,6 +5194,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. $subject);
 				$this->email->message($message);
 			break;
@@ -5240,6 +5253,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $from_name);
 				$this->email->to($to);
+				$this->email->reply_to($from_email);
 				$this->email->subject($this->options['email_subject'] .' '. $subject);
 				$this->email->message($message);
 			break;
@@ -5277,6 +5291,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $name);
 				$this->email->to($to);
+				$this->email->reply_to($from);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -5314,6 +5329,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $name);
 				$this->email->to($to);
+				$this->email->reply_to($from);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -5360,6 +5376,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 				
 				$this->email->from(Util::email_sender(), $name);
 				$this->email->to($to);
+				$this->email->reply_to($from);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -5413,6 +5430,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $name);
 				$this->email->to($to);
+				$this->email->reply_to($from);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -5432,6 +5450,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 				
 				$this->email->from(Util::email_sender(), $this->options['sim_name']);
 				$this->email->to($data['email']);
+				$this->email->reply_to($data['fromEmail']);
 				$this->email->cc($cc);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
@@ -5452,6 +5471,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 				
 				$this->email->from(Util::email_sender(), $this->options['sim_name']);
 				$this->email->to($data['email']);
+				$this->email->reply_to($data['fromEmail']);
 				$this->email->cc($cc);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
@@ -5497,7 +5517,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 						
 						$data['entries'][$p->post_id]['id'] = $p->post_id;
 						$data['entries'][$p->post_id]['title'] = $p->post_title;
-						$data['entries'][$p->post_id]['author'] = $this->char->get_authors($p->post_authors, true);
+						$data['entries'][$p->post_id]['author'] = $this->char->get_authors($p->post_authors, true, true);
 						$data['entries'][$p->post_id]['date'] = mdate($datestring, $date);
 						$data['entries'][$p->post_id]['mission'] = $this->mis->get_mission($p->post_mission, 'mission_title');
 						$data['entries'][$p->post_id]['status'] = $p->post_status;
@@ -5569,7 +5589,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 								
 								$data['entries'][$l->log_id]['id'] = $l->log_id;
 								$data['entries'][$l->log_id]['title'] = $l->log_title;
-								$data['entries'][$l->log_id]['author'] = $this->char->get_character_name($l->log_author_character, true);
+								$data['entries'][$l->log_id]['author'] = $this->char->get_character_name($l->log_author_character, true, false, true);
 								$data['entries'][$l->log_id]['date'] = mdate($datestring, $date);
 								$data['entries'][$l->log_id]['status'] = $l->log_status;
 							}
@@ -5580,7 +5600,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 							
 							$data['entries'][$l->log_id]['id'] = $l->log_id;
 							$data['entries'][$l->log_id]['title'] = $l->log_title;
-							$data['entries'][$l->log_id]['author'] = $this->char->get_character_name($l->log_author_character, true);
+							$data['entries'][$l->log_id]['author'] = $this->char->get_character_name($l->log_author_character, true, false, true);
 							$data['entries'][$l->log_id]['date'] = mdate($datestring, $date);
 							$data['entries'][$l->log_id]['status'] = $l->log_status;
 						}
@@ -5648,7 +5668,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 								
 								$data['entries'][$nid]['id'] = $nid;
 								$data['entries'][$nid]['title'] = $n->news_title;
-								$data['entries'][$nid]['author'] = $this->char->get_character_name($n->news_author_character, true);
+								$data['entries'][$nid]['author'] = $this->char->get_character_name($n->news_author_character, true, false, true);
 								$data['entries'][$nid]['date'] = mdate($datestring, $date);
 								$data['entries'][$nid]['category'] = $n->newscat_name;
 								$data['entries'][$nid]['status'] = $n->news_status;
@@ -5661,7 +5681,7 @@ abstract class Nova_manage extends Nova_controller_admin {
 							
 							$data['entries'][$nid]['id'] = $nid;
 							$data['entries'][$nid]['title'] = $n->news_title;
-							$data['entries'][$nid]['author'] = $this->char->get_character_name($n->news_author_character, true);
+							$data['entries'][$nid]['author'] = $this->char->get_character_name($n->news_author_character, true, false, true);
 							$data['entries'][$nid]['date'] = mdate($datestring, $date);
 							$data['entries'][$nid]['category'] = $n->newscat_name;
 							$data['entries'][$nid]['status'] = $n->news_status;

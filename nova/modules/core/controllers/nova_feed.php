@@ -5,7 +5,7 @@
  * @package		Nova
  * @category	Controller
  * @author		Anodyne Productions
- * @copyright	2011 Anodyne Productions
+ * @copyright	2013 Anodyne Productions
  */
 
 abstract class Nova_feed extends Controller {
@@ -83,7 +83,7 @@ abstract class Nova_feed extends Controller {
 			$i = 1;
 			foreach ($logs->result() as $log)
 			{
-				$data['entries'][$i]['link'] = site_url('sim/viewpost/'.$log->log_id);
+				$data['entries'][$i]['link'] = site_url('sim/viewlog/'.$log->log_id);
 				$data['entries'][$i]['title'] = $log->log_title;
 				$data['entries'][$i]['date'] = $log->log_date;
 				

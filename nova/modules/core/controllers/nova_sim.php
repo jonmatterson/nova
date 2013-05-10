@@ -5,7 +5,7 @@
  * @package		Nova
  * @category	Controller
  * @author		Anodyne Productions
- * @copyright	2011 Anodyne Productions
+ * @copyright	2013 Anodyne Productions
  */
 
 require_once MODPATH.'core/libraries/Nova_controller_main.php';
@@ -128,11 +128,11 @@ abstract class Nova_sim extends Nova_controller_main {
 						switch ($award_row->award_cat)
 						{
 							case 'both':
-								$data['awardees'][$i]['person'] = $this->char->get_character_name($item->awardrec_character);
+								$data['awardees'][$i]['person'] = $this->char->get_character_name($item->awardrec_character, true, false, true);
 							break;
 								
 							case 'ic':
-								$data['awardees'][$i]['person'] = $this->char->get_character_name($item->awardrec_character);
+								$data['awardees'][$i]['person'] = $this->char->get_character_name($item->awardrec_character, true, false, true);
 							break;
 								
 							case 'ooc':
@@ -763,7 +763,7 @@ abstract class Nova_sim extends Nova_controller_main {
 				
 				$data['logs'][$log->log_id]['id'] = $log->log_id;
 				$data['logs'][$log->log_id]['title'] = $log->log_title;
-				$data['logs'][$log->log_id]['author'] = $this->char->get_character_name($log->log_author_character, true);
+				$data['logs'][$log->log_id]['author'] = $this->char->get_character_name($log->log_author_character, true, false, true);
 				$data['logs'][$log->log_id]['date'] = mdate($datestring, $date);
 			}
 		}
@@ -872,7 +872,7 @@ abstract class Nova_sim extends Nova_controller_main {
 				
 				$data['posts'][$post->post_id]['id'] = $post->post_id;
 				$data['posts'][$post->post_id]['title'] = $post->post_title;
-				$data['posts'][$post->post_id]['author'] = $this->char->get_authors($post->post_authors, true);
+				$data['posts'][$post->post_id]['author'] = $this->char->get_authors($post->post_authors, true, true);
 				$data['posts'][$post->post_id]['date'] = mdate($datestring, $date);
 				$data['posts'][$post->post_id]['mission'] = $this->mis->get_mission($post->post_mission, 'mission_title');
 				$data['posts'][$post->post_id]['mission_id'] = $post->post_mission;
@@ -1047,7 +1047,7 @@ abstract class Nova_sim extends Nova_controller_main {
 								
 								$data['posts'][$pid]['id'] = $post->post_id;
 								$data['posts'][$pid]['title'] = $post->post_title;
-								$data['posts'][$pid]['authors'] = $this->char->get_authors($post->post_authors);
+								$data['posts'][$pid]['authors'] = $this->char->get_authors($post->post_authors, true, true);
 								$data['posts'][$pid]['timeline'] = $post->post_timeline;
 								$data['posts'][$pid]['location'] = $post->post_location;
 							}
@@ -1902,7 +1902,7 @@ abstract class Nova_sim extends Nova_controller_main {
 			$data['title'] = $logs->log_title;
 			$data['content'] = $logs->log_content;
 			$data['date'] = mdate($datestring, $date);
-			$data['author'] = $this->char->get_character_name($logs->log_author_character, true);
+			$data['author'] = $this->char->get_character_name($logs->log_author_character, true, false, true);
 			$data['tags'] = ( ! empty($logs->log_tags)) ? $logs->log_tags : NULL;
 			
 			// determine if they can edit the log
@@ -1956,7 +1956,7 @@ abstract class Nova_sim extends Nova_controller_main {
 			{
 				$date = gmt_to_local($c->lcomment_date, $this->timezone, $this->dst);
 				
-				$data['comments'][$i]['author'] = $this->char->get_character_name($c->lcomment_author_character, true);
+				$data['comments'][$i]['author'] = $this->char->get_character_name($c->lcomment_author_character, true, false, true);
 				$data['comments'][$i]['content'] = $c->lcomment_content;
 				$data['comments'][$i]['date'] = mdate($datestring, $date);
 				
@@ -2100,7 +2100,7 @@ abstract class Nova_sim extends Nova_controller_main {
 			$data['title'] = $row->post_title;
 			$data['content'] = $row->post_content;
 			$data['date'] = mdate($datestring, $date);
-			$data['author'] = $this->char->get_authors($row->post_authors);
+			$data['author'] = $this->char->get_authors($row->post_authors, true, true);
 			$data['tags'] = $row->post_tags;
 			$data['location'] = $row->post_location;
 			$data['timeline'] = $row->post_timeline;
@@ -2131,7 +2131,7 @@ abstract class Nova_sim extends Nova_controller_main {
 				{
 					$date = gmt_to_local($c->pcomment_date, $this->timezone, $this->dst);
 					
-					$data['comments'][$i]['author'] = $this->char->get_character_name($c->pcomment_author_character);
+					$data['comments'][$i]['author'] = $this->char->get_character_name($c->pcomment_author_character, true, false, true);
 					$data['comments'][$i]['content'] = $c->pcomment_content;
 					$data['comments'][$i]['date'] = mdate($datestring, $date);
 					
@@ -2168,7 +2168,7 @@ abstract class Nova_sim extends Nova_controller_main {
 				$data['header'] = lang('error_title_invalid_id');
 				$data['msg_error'] = lang('error_msg_id_numeric');
 			}
-			elseif ($query->num_rows() == 0)
+			elseif ($row === false)
 			{
 				$data['header'] = lang('error_title_id_not_found');
 				$data['msg_error'] = lang('error_msg_not_found');
@@ -2274,6 +2274,7 @@ abstract class Nova_sim extends Nova_controller_main {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $name);
 				$this->email->to($to);
+				$this->email->reply_to($from);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -2313,6 +2314,7 @@ abstract class Nova_sim extends Nova_controller_main {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $name);
 				$this->email->to($to);
+				$this->email->reply_to($from);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -2371,6 +2373,7 @@ abstract class Nova_sim extends Nova_controller_main {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $name);
 				$this->email->to($to);
+				$this->email->reply_to($from);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -2410,6 +2413,7 @@ abstract class Nova_sim extends Nova_controller_main {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $name);
 				$this->email->to($to);
+				$this->email->reply_to($from);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -2518,6 +2522,7 @@ abstract class Nova_sim extends Nova_controller_main {
 						// set the parameters for sending the email
 						$this->email->from(Util::email_sender(), $row->docking_gm_name);
 						$this->email->to($to);
+						$this->email->reply_to($row->docking_gm_email);
 						$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 						$this->email->message($message);
 					}

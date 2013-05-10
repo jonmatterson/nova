@@ -5,7 +5,7 @@
  * @package		Nova
  * @category	Controller
  * @author		Anodyne Productions
- * @copyright	2011 Anodyne Productions
+ * @copyright	2013 Anodyne Productions
  */
 
 require_once MODPATH.'core/libraries/Nova_controller_main.php';
@@ -662,7 +662,7 @@ abstract class Nova_main extends Nova_controller_main {
 				$data['news'][$i]['date'] = mdate($datestring, $date);
 				$data['news'][$i]['cat_id'] = $row->news_cat;
 				$data['news'][$i]['category'] = $row->newscat_name;
-				$data['news'][$i]['author'] = $this->char->get_character_name($row->news_author_character, true);
+				$data['news'][$i]['author'] = $this->char->get_character_name($row->news_author_character, true, false, true);
 				$data['news'][$i]['comment_count'] = $this->news->count_news_comments($row->news_id);
 				
 				++$i;
@@ -835,7 +835,7 @@ abstract class Nova_main extends Nova_controller_main {
 			$data['title'] = $row->news_title;
 			$data['content'] = $row->news_content;
 			$data['date'] = mdate($datestring, $date);
-			$data['author'] = $this->char->get_character_name($row->news_author_character, true);
+			$data['author'] = $this->char->get_character_name($row->news_author_character, true, false, true);
 			$data['category'] = $row->newscat_name;
 			$data['tags'] = $row->news_tags;
 			$data['news_id'] = $id;
@@ -934,7 +934,7 @@ abstract class Nova_main extends Nova_controller_main {
 			{
 				$date = gmt_to_local($c->ncomment_date, $this->timezone, $this->dst);
 				
-				$data['comments'][$i]['author'] = $this->char->get_character_name($c->ncomment_author_character, true);
+				$data['comments'][$i]['author'] = $this->char->get_character_name($c->ncomment_author_character, true, false, true);
 				$data['comments'][$i]['content'] = $c->ncomment_content;
 				$data['comments'][$i]['date'] = mdate($datestring, $date);
 				
@@ -1006,6 +1006,7 @@ abstract class Nova_main extends Nova_controller_main {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $data['name']);
 				$this->email->to($to);
+				$this->email->reply_to($data['email']);
 				$this->email->subject($this->options['email_subject'] .' '. $data['subject']);
 				$this->email->message($message);
 			break;
@@ -1043,6 +1044,7 @@ abstract class Nova_main extends Nova_controller_main {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $name);
 				$this->email->to($to);
+				$this->email->reply_to($from);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -1082,6 +1084,7 @@ abstract class Nova_main extends Nova_controller_main {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $name);
 				$this->email->to($to);
+				$this->email->reply_to($from);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -1202,6 +1205,7 @@ abstract class Nova_main extends Nova_controller_main {
 				// set the parameters for sending the email
 				$this->email->from(Util::email_sender(), $data['name']);
 				$this->email->to($to);
+				$this->email->reply_to($data['email']);
 				$this->email->subject($this->options['email_subject'] .' '. $email_data['email_subject']);
 				$this->email->message($message);
 			break;
@@ -1236,7 +1240,7 @@ abstract class Nova_main extends Nova_controller_main {
 				$items[$i]['title'] = $row->log_title;
 				$items[$i]['content'] = word_limiter(strip_tags($row->log_content, '<br><br/><br />'), 50);
 				$items[$i]['date'] = mdate($datestring, $date);
-				$items[$i]['author'] = $this->char->get_character_name($row->log_author_character, true);
+				$items[$i]['author'] = $this->char->get_character_name($row->log_author_character, true, false, true);
 				
 				++$i;
 			}
@@ -1269,7 +1273,7 @@ abstract class Nova_main extends Nova_controller_main {
 				$items[$i]['content'] = $row->news_content;
 				$items[$i]['date'] = mdate($datestring, $date);
 				$items[$i]['category'] = $row->newscat_name;
-				$items[$i]['author'] = $this->char->get_character_name($row->news_author_character, true);
+				$items[$i]['author'] = $this->char->get_character_name($row->news_author_character, true, false, true);
 				
 				++$i;
 			}
@@ -1305,7 +1309,7 @@ abstract class Nova_main extends Nova_controller_main {
 				$items[$i]['title'] = $row->post_title;
 				$items[$i]['content'] = word_limiter(strip_tags($row->post_content, '<br><br/><br />'), 50);
 				$items[$i]['date'] = mdate($datestring, $date);
-				$items[$i]['authors'] = $this->char->get_authors($row->post_authors);
+				$items[$i]['authors'] = $this->char->get_authors($row->post_authors, true, true);
 				$items[$i]['mission'] = anchor('sim/missions/id/'.$row->post_mission, $this->mis->get_mission($row->post_mission, 'mission_title'));
 				
 				++$i;
