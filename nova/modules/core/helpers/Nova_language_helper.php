@@ -80,6 +80,8 @@ if ( ! function_exists('text_output'))
 {
 	function text_output($text = '', $element = 'p', $class = NULL, $nl2br = TRUE, $br2p = TRUE)
 	{
+        $text = map2url($text);
+        
 		/* set the class variable */
 		$class_var = (isset($class)) ? ' class="' . $class . '"' : NULL;
 		
@@ -156,3 +158,26 @@ if ( ! function_exists('br2p'))
 		return $str;
 	}
 }
+
+if ( ! function_exists('map2url'))
+{
+	function map2url($text)
+	{
+        $end_pos = 0;
+        
+        $match_start = '[[asset:';
+        $match_end = ']]';
+		while(($start_pos = strpos($text, $match_start, $end_pos)) !== false)
+        {
+            if(strpos($text, $match_end, $start_pos) !== false)
+            {
+                $text = substr_replace($text, base_url().APPFOLDER.'/assets/', $start_pos, strlen($match_start));
+                $text = substr_replace($text, '', strpos($text, $match_end, $start_pos), strlen($match_end));
+            }
+        }
+        
+		return $text;
+	}
+}
+
+//

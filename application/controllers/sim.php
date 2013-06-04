@@ -9,7 +9,27 @@ class Sim extends Nova_sim {
 		parent::__construct();
 	}
 	
-	/**
-	 * Put your own methods below this...
-	 */
+	public function departments()
+    {
+		$this->_regions['nav_sub'] = Menu::build('sub', 'main');
+        return parent::departments();
+    }
+	
+	public function tour($id = false)
+    {
+		$this->_regions['nav_sub'] = Menu::build('sub', 'main');
+        return parent::tour($id);
+    }
+	
+	public function specs($id = false)
+    {
+		$this->_regions['nav_sub'] = Menu::build('sub', 'main');
+        return parent::specs($id);
+    }
+	
+	public function decks($item = false)
+    {
+		$this->_regions['nav_sub'] = Menu::build('sub', 'main');
+        return parent::decks($item);
+    }
 }

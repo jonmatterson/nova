@@ -1,10 +1,10 @@
 # Nova
 
-application/assets/images/*/
+# application/assets/images/*/
 application/cache/
 application/logs/
 application/modules/
-application/views/
+# application/views/
 
 application/config/database.php
 
@@ -12,7 +12,7 @@ application/config/database.php
 !application/views/titan/*
 !application/views/_base_override/*
 
-application/assets/common/*
+# application/assets/common/*
 
 app/*
 
@@ -35,3 +35,4 @@ Icon?
 *.tmproj
 *.tmproject
 tmtags
+/nbproject/private/

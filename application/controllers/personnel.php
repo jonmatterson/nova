@@ -7,9 +7,12 @@ class Personnel extends Nova_personnel {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->_regions['nav_sub'] = false;
 	}
 	
-	/**
-	 * Put your own methods below this...
-	 */
+	public function coc()
+    {
+		$this->_regions['nav_sub'] = Menu::build('sub', 'main');
+        return parent::coc();
+    }
 }
