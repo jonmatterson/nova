@@ -78,6 +78,8 @@ $button_login = array(
 				}
 			});
 		</script>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 		
 	</head>
 	
@@ -86,50 +88,102 @@ $button_login = array(
 		<noscript>
 			<div class="system_warning"><?php echo lang_output('text_javascript_off', '');?></div>
 		</noscript>
-		
-		<?php if (Auth::is_logged_in()): ?>
-			<div class="modal hide fade" id="dashboardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h3>Dashboard</h3>
-				</div>
-				<div class="modal-body">
-					<div class="row-fluid">
-						<div class="span4"><?php echo $panel_1;?></div>
-						<div class="span4"><?php echo $panel_2;?></div>
-						<div class="span4"><?php echo $panel_3;?></div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
-				</div>
-			</div>
-		<?php endif;?>
-		
-		<header>
-			
-			<nav>
-				<?php echo Theme_Transformer::nav_bar($nav_main);?>
-			</nav>
-			
-		</header>
-		
-		<div class="container-fluid">
-			
-			<div class="row-fluid">
-				<div class="span2 hidden-phone"></div>
-				<div class="span8">
-					<?php echo $flash_message;?>
-					<?php echo $content;?>
-				</div>
-				<div class="span2 hidden-phone"></div>
-			</div>
+        
+        <div id="background">
+            
+        </div>
+        
+        <div id="stripe-offsetter">
+            
+            <div id="stripe">
+                
+                <div id="stripe-inner">
+                
+                    <div id="stripe-gradient">
 
-			<footer>
-				Powered by <strong><?php echo APP_NAME;?></strong> from <a href="http://www.anodyne-productions.com" target="_blank">Anodyne Productions</a> | <?php echo anchor('main/credits', 'Site Credits');?>
-			</footer>
-			
-		</div>
-		
+                    </div>
+                    
+                </div>
+
+            </div>
+        
+        </div>
+            
+        <div id="foreground">
+            
+            <div id="foreground-wrapper">
+                
+                <div id="signin-panel">
+            
+                    <?php Theme_Includer::view('signin-panel'); ?>
+                    
+                </div>
+
+                <div id="taskforce-image">
+                    <?php echo anchor('main/index', '<img src="'.Theme_URL::img('tf93-logo.png').'">'); ?>
+                   
+                    </a>
+                </div>
+
+                <div id="content-container">
+
+                    <div id="content-wrapper">
+                        
+                        <div id="site-head">
+                            
+                            <div id="site-head-wrapper">
+                                
+                                <?php echo anchor('main/index', '<h1>Faltan Station</h1><h2 class="sub">Task Force 93 Base of Operations</h2><h2 class="sub-alt">TF93 Base of Operations</h2>'); ?>
+                        
+                            
+                            </div>
+                        
+                        </div>
+
+                        <?php if (Auth::is_logged_in()): ?>
+                            <div class="modal hide fade" id="dashboardModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                    <h3>Dashboard</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row-fluid">
+                                        <div class="span4"><?php echo $panel_1;?></div>
+                                        <div class="span4"><?php echo $panel_2;?></div>
+                                        <div class="span4"><?php echo $panel_3;?></div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#" class="btn" data-dismiss="modal" aria-hidden="true">Close</a>
+                                </div>
+                            </div>
+                        <?php endif;?>
+
+                        <br><br class="hidden-phone">
+                        
+                        <div class="container-fluid">
+
+                            <?php echo $flash_message;?>
+                            
+                            <div style="margin:auto; width:600px; max-width:100%;">
+                            <?php echo $content;?>
+                            </div>
+
+                            <div style="clear:both;"></div>
+
+                            <footer>
+                                Powered by <strong><?php echo APP_NAME;?></strong> from <a href="http://www.anodyne-productions.com" target="_blank">Anodyne Productions</a><br><?php echo anchor('main/rules', 'Rules');?> | <?php echo anchor('main/contact', 'Contact');?> | <?php echo anchor('main/credits', 'Credits');?>
+                            </footer>
+
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+            </div>
+
+        </div>
+              
 	</body>
 </html>
