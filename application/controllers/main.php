@@ -40,4 +40,18 @@ class Main extends Nova_main {
 		Template::render();
         
     }
+
+	public function chat()
+	{
+		$data = array(
+			'header'=>'Chat',
+			'url'=>'http://widget.mibbit.com/?settings=c0696eb657ff8fd5838015b6b8b17796&amp;server=irc.aceirc.org&amp;channel=%23Faltan'
+			);
+
+		$this->_regions['content'] = Location::view('main_chat', $this->skin, 'main', $data);
+		$this->_regions['title'].= $data['header'];
+
+		Template::assign($this->_regions);
+		Template::render();
+	}
 }

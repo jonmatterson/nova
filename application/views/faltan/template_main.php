@@ -78,6 +78,8 @@ $button_login = array(
 				}
 			});
 		</script>
+        
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 		
 	</head>
 	
@@ -131,9 +133,8 @@ $button_login = array(
                             
                             <div id="site-head-wrapper">
                                 
-                                <?php echo anchor('main/index', '<h1>Faltan Station</h1><h2 class="sub">Raeyan Sector Regional Operations</h2><h2 class="sub-alt">Raeyan Regional Ops</h2>'); ?>
+                                <?php echo anchor('main/index', '<h1>Faltan Station</h1><h2 class="sub">Task Force 93 Base of Operations</h2><h2 class="sub-alt">TF93 Base of Operations</h2>'); ?>
                         
-                                
                             
                             </div>
                         
@@ -196,7 +197,10 @@ $button_login = array(
                                 <?php } ?>
                                     <?php echo $flash_message;?>
                                     <section class="page-content">
-                                    <?php echo $content;?>
+                                    <?php 
+                                    if(isset($nav_pills) && $nav_pills)
+                                        echo Theme_Transformer::nav_pills($nav_pills);
+                                    echo $content;?>
                                     </section>
                                     <?php echo $ajax;?>
 

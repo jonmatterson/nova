@@ -15,7 +15,11 @@
 		
 	<?php foreach ($depts as $value): ?>
 		<div class="row-fluid">
-			<?php echo text_output(substr($value['name'], 0, strrpos($value['name'], '(')), 'h4');?>
+			<?php 
+            $dtitle = substr($value['name'], 0, strrpos($value['name'], '('));
+            $dmanifest = substr($value['name'], strrpos($value['name'], '('));
+            echo text_output($dtitle.'<span class="muted">'.$dmanifest.'</span>', 'h4');
+            ?>
 			<?php echo text_output($value['desc']);?>
 			
 			<?php if (isset($value['positions'])): ?>

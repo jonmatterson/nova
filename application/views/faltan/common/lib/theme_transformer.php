@@ -23,4 +23,9 @@ class Theme_Transformer
 	{
 		return str_replace('<ul', '<ul class="nav nav-tabs nav-stacked"', $nav_sub);
 	}
+	
+	public static function nav_pills($nav_sub)
+	{
+		return str_replace('<ul', '<ul class="nav nav-pills"', $nav_sub);
+	}
 }
