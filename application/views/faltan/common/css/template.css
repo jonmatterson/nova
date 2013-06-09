@@ -445,6 +445,34 @@ body {
     }
 }
 
+@media (max-width: 400px) {
+    #taskforce-image {
+        margin-left: -10px;
+        margin-top: 0px;
+    }
+    #taskforce-image img {
+        width: 100px;
+    }
+    #foreground {
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    #site-head {
+        margin-left: 100px;
+    }
+    #site-head-wrapper {
+        padding-top: 10px;
+    }
+    #site-head h1 {
+        font-size: 20px;
+    }
+    #site-head h2 { 
+        font-size: 12px; 
+        height: 5px;
+        line-height: 5px;
+    }
+}
+
 .nav-bar {
     margin-bottom: 20px;
     height: 36px;
