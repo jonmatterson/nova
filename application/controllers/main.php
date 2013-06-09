@@ -54,4 +54,10 @@ class Main extends Nova_main {
 		Template::assign($this->_regions);
 		Template::render();
 	}
+    
+    public function join() 
+    {
+		$this->_regions['nav_sub'] = false;
+        return parent::join();
+    }
 }

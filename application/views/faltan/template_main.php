@@ -169,28 +169,11 @@ $button_login = array(
 
                         <div class="container-fluid">
 
-                            <?php if($nav_sub || ! Auth::is_logged_in()){ ?>
+                            <?php if($nav_sub){ ?>
                             <div class="row-fluid">
 
                                 <nav class="span3">
                                     <?php echo Theme_Transformer::nav_sub($nav_sub);?>
-                                    <?php if ( ! Auth::is_logged_in()): ?>
-                                    <div class="well">
-                                        <?php echo form_open('login/check_login');?>
-
-                                            <label class="control-label"><?php echo ucwords(lang('labels_email_address'));?></label>
-                                            <input type="text" name="email" class="span12">
-                                            <label class="control-label"><?php echo ucfirst(lang('labels_password'));?></label>
-                                            <input type="password" name="password" class="span12">
-                                            <div>
-                                            <label class="checkbox"><input id="remember" type="checkbox" name="remember" value="yes"><?php echo ucfirst(lang('actions_remember').' '.lang('labels_me'));?></label>
-                                            </div>
-                                            <input type="submit" class="btn btn-success section">
-                                            <span class="help-block"><?php echo anchor('login/reset_password', lang('login_forgot'));?></span>
-
-                                        <?php echo form_close();?>
-                                    </div>
-                                <?php endif;?>
                                 </nav>
 
                                 <div class="span9">
