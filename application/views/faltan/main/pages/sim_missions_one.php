@@ -49,13 +49,13 @@
 				<?php echo table_row_spacer(3, 10);?>
 				<div class="row-fluid">
 					<div class="span2"><strong><?php echo $label['date_start'];?></strong></div>
-					<div class="span10"><?php echo $basic['start'];?></div>
+                    <div class="span10"><?php echo substr($basic['start'], 0, strpos($basic['start'], '@'));?></div>
 				</div>
 				
 				<?php if (isset($basic['end'])): ?>
 					<div class="row-fluid">
 						<div class="span2"><strong><?php echo $label['date_end'];?></strong></div>
-						<div class="span10"><?php echo $basic['end'];?></div>
+						<div class="span10"><?php echo substr($basic['end'], 0, strpos($basic['end'], '@'));?></div>
 					</div>
 				<?php endif; ?>
 		<?php endif; ?>

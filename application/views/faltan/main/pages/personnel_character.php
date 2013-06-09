@@ -117,6 +117,20 @@ else
                     <?php 
                     $first = true;
                     foreach ($tabs as $value): 
+                        
+                        if(!isset($sections))
+                            continue;
+                        
+                        $empty = true;
+                        foreach($sections[$value['id']] as $a){
+                            foreach($fields[$a['id']] as $b){
+                                if(strlen(trim($b['value'])))
+                                    $empty = false;
+                            }
+                        }
+                        if($empty)
+                            continue;
+                        
                         if($first)
                         {
                             echo '<li class="active">';
@@ -134,6 +148,21 @@ else
                     <div id="<?php echo $id['link'];?>" class="bioTab">
                         <?php if (isset($sections)): ?>
                             <?php foreach ($sections[$id['id']] as $a): ?>
+                        
+                                <?php
+                                
+                                if(!isset($fields[$a['id']]))
+                                    continue;
+                                
+                                $empty = true;
+                                foreach($fields[$a['id']] as $b)
+                                    if(strlen(trim($b['value'])))
+                                        $empty = false;
+                                if($empty)
+                                    continue;
+                                
+                                ?>
+                        
                                 <h3><?php echo $a['name'];?></h3>
 
                                 <?php if (isset($fields[$a['id']])): ?>
