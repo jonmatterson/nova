@@ -1,21 +1,5 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/**
- * In application/models/posts_model.php,
- * 
- *    add the following before the class definition:
- * 
- *      require_once APPPATH.'third_party/collaborative_writing/posts_model_traits.php';
- * 
- *    and add the following in the class definition:
- * 
- *      use Collaborative_Writing_Posts_Model_Trait;
- * 
- * Alternatively, copy the posts_model_traits.php source code directly into the 
- * class definition in application/models/posts_model.php if your version of PHP
- * does not support traits.
- */
-
 trait Collaborative_Writing_Posts_Model_Trait
 {
     protected $deferred_pad_id_for_next_post = null;
