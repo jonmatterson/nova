@@ -373,6 +373,8 @@ abstract class Nova_wiki_model extends CI_Model {
 	
 	public function create_page($data = '')
 	{
+		if(!isset($data['page_draft']))
+				$data['page_draft'] = 0;
 		$query = $this->db->insert('wiki_pages', $data);
 		
 		return $query;
