@@ -1,0 +1,8 @@
+.chronological_mission_posts--sim_missions--read-story {
+  float: right;
+  border-bottom: none;
+}
+
+.chronological_mission_posts--sim_missions--read-story button {
+  cursor: pointer;
+}
