@@ -7,7 +7,6 @@ application/modules/
 
 application/config/database.php
 
-application/assets/common/*
 
 app/*
 
