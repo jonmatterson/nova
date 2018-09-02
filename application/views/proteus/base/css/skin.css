@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+body {
+  background: #192939;
+}
+
+header {
+  background-color: #000;
+  background-image: url('../images/space_by_speedy013.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-bottom: 1px solid #708ca8;
+}
+
+header .wrapper {
+  background: none;
+}
+
+#menu .nav-main ul li a {
+  color: #a5ebff;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, .6);
+}
+
+#menu .nav-main ul li a.active, #menu .nav-main ul li a:hover.active {
+  color: #1c4d77;
+  background: #fff;
+  border-color: transparent;
+}
+
+#menu .nav-main ul li a:hover {
+  border-color: transparent;
+  background: transparent;
+  text-shadow: none;
+  box-shadow: none;
+}
+
+.page-head {
+    color: #1c4d77;
+    line-height:1;
+    font-size: 30px;
+}
+.page-head small {
+    font-size: 20px;
+}
+
+.content {
+  padding: 20px;
+  font-size: 15px;
+}
+
+ul.bulleted {
+  list-style: disc;
+  margin-left: 12px;
+  padding-left: 12px;
+  margin-bottom: 12px;
+}
+
+small {
+  font-size: 85%;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a {
+  background: #258;
+  border-color: #1c4d77;
+}
+
+.ui-tabs .ui-tabs-panel {
+  border-top-color: #1c4d77;
+}

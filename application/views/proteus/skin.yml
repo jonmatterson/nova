@@ -1,0 +1,18 @@
+skin: Proteus
+location: proteus
+credits: |
+  The Proteus skin is a derivative of the Pulsar skin created by Jon Matterson. Edits are permissible as long as the original credits stay in tact. The Pulsar skin was created by Anodyne Productions. Edits are permissible as long as original credits stay intact. The Pulsar skin includes the jQuery BlockUI plugin by Malsup. More information can be found at <a href="http://malsup.com/jquery/block/">http://malsup.com/jquery/block/</a>.
+version: 3.0
+sections:
+  -
+    type: main
+    preview: preview-main.jpg
+  -
+    type: login
+    preview: preview-login.jpg
+  -
+    type: wiki
+    preview: preview-wiki.jpg
+  -
+    type: admin
+    preview: preview-admin.jpg
