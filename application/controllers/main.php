@@ -25,7 +25,11 @@ class Main extends Nova_main {
  			'california' => "Your California Privacy Rights Policy",
  			'coppa' => "COPPA Policy",
  			'ip' => "Intellectual Property Policy",
-			'dmca' => "Copyright Infringement Notification Policy"
+ 			'content' => "Web Content Policy",
+			'dmca' => "Copyright Infringement Notification Policy",
+ 			'warranties' => "Disclaimer of Warranties",
+ 			'liability' => "Limitation of Liability",
+ 			'indemnification' => "Indemnification",
  		);
  		
  		if($policy){
