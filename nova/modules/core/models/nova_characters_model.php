@@ -606,6 +606,9 @@ abstract class Nova_characters_model extends CI_Model {
 	
 	public function create_promotion_record($data = '')
 	{
+		if(is_array($data) && !isset($data['prom_user']))
+				$data['prom_user'] = '';
+		
 		$query = $this->db->insert('characters_promotions', $data);
 		
 		$this->dbutil->optimize_table('characters_promotions');
