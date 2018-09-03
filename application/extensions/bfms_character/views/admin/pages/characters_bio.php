@@ -2,7 +2,7 @@
 
 <div class="indent-left" id="bfms_character_fields">
  
- <?php echo text_output($label['bfms_instructions'], 'p'); ?>
+ <?php echo text_output($label['bfms_instructions'], 'p', 'fontSmall gray'); ?>
  
  <p>
    <kbd><?php echo $label['bfms_character_url'] ?></kbd>

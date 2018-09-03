@@ -4,15 +4,21 @@ require_once dirname(__FILE__).'/helpers/bfms_character_api_helper.php';
 
 $this->require_extension('jquery');
 
+$labels = [
+  'bfms' => 'Bravo Fleet Management System',
+  'bfms_instructions' => 'If you provide the URL to your character within BFMS, the data from BFMS will be displayed so that you do not have to duplicate it. This URL should be of the form <span style="font-family: monospace">https://www.bravofleet.com/character/###/</span> and can be retrieved by visiting your profile and navigating to your character.',
+  'bfms_character_url' => 'Character URL'
+];
+
 $this->event->listen(['db', 'insert', 'prepare', 'characters', 'main', 'join'], function($event){
   if(empty($event['data']['bfms_character_url']) && $this->input->post('bfms_character_url', true))
     $event['data']['bfms_character_url'] = $this->input->post('bfms_character_url', true);
 });
 
-$this->event->listen(['location', 'view', 'data', 'main', 'main_join_2'], function($event){
-  $event['data']['label']['bfms'] = 'Bravo Fleet Management System';
-  $event['data']['label']['bfms_instructions'] = 'If you provide the URL to your character within BFMS, the data from BFMS will be displayed so that you do not have to duplicate it.';
-  $event['data']['label']['bfms_character_url'] = 'Character URL';
+$this->event->listen(['location', 'view', 'data', 'main', 'main_join_2'], function($event) use (&$labels){
+  $event['data']['label']['bfms'] = $labels['bfms'];
+  $event['data']['label']['bfms_instructions'] = $labels['bfms_instructions'];
+  $event['data']['label']['bfms_character_url'] = $labels['bfms_character_url'];
   $event['data']['inputs']['bfms_character_url'] = array(
     'name' => 'bfms_character_url',
     'id' => 'bfms_character_url'
@@ -25,10 +31,10 @@ $this->event->listen(['location', 'view', 'output', 'main', 'main_join_2'], func
                   ->prepend($this->extension['bfms_character']->view('characters_bio', $this->skin, 'admin', $event['data']));
 });
 
-$this->event->listen(['location', 'view', 'data', 'admin', 'characters_create'], function($event){
-  $event['data']['label']['bfms'] = 'Bravo Fleet Management System';
-  $event['data']['label']['bfms_instructions'] = 'If you provide the URL to your character within BFMS, the data from BFMS will be displayed so that you do not have to duplicate it.';
-  $event['data']['label']['bfms_character_url'] = 'Character URL';
+$this->event->listen(['location', 'view', 'data', 'admin', 'characters_create'], function($event) use (&$labels){
+  $event['data']['label']['bfms'] = $labels['bfms'];
+  $event['data']['label']['bfms_instructions'] = $labels['bfms_instructions'];
+  $event['data']['label']['bfms_character_url'] = $labels['bfms_character_url'];
   $event['data']['inputs']['bfms_character_url'] = array(
     'name' => 'bfms_character_url',
     'id' => 'bfms_character_url'
@@ -41,12 +47,12 @@ $this->event->listen(['location', 'view', 'output', 'admin', 'characters_create'
                   ->prepend($this->extension['bfms_character']->view('characters_bio', $this->skin, 'admin', $event['data']));
 });
 
-$this->event->listen(['location', 'view', 'data', 'admin', 'characters_bio'], function($event){
+$this->event->listen(['location', 'view', 'data', 'admin', 'characters_bio'], function($event) use (&$labels){
   $id = $this->uri->segment(3);
   $char = $this->char->get_character($id);
-  $event['data']['label']['bfms'] = 'Bravo Fleet Management System';
-  $event['data']['label']['bfms_instructions'] = 'If you provide the URL to your character within BFMS, the data from BFMS will be displayed so that you do not have to duplicate it.';
-  $event['data']['label']['bfms_character_url'] = 'Character URL';
+  $event['data']['label']['bfms'] = $labels['bfms'];
+  $event['data']['label']['bfms_instructions'] = $labels['bfms_instructions'];
+  $event['data']['label']['bfms_character_url'] = $labels['bfms_character_url'];
   $event['data']['inputs']['bfms_character_url'] = array(
     'name' => 'bfms_character_url',
     'id' => 'bfms_character_url',
