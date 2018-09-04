@@ -50,6 +50,7 @@ $button_login = array(
 		<title><?php echo $title;?></title>
 
 		<meta name="description" content="<?php echo $this->config->item('meta_desc');?>" />
+		<meta name="og:description" content="<?php echo $this->config->item('meta_desc');?>" />
 		<meta name="keywords" content="<?php echo $this->config->item('meta_keywords');?>" />
 		<meta name="author" content="<?php echo $this->config->item('meta_author');?>" />
 

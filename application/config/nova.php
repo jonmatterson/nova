@@ -58,8 +58,8 @@ $config['include_head_login']	= MODFOLDER.'/assets/include_head_login.php';
 | a simple Google search from your web browser.
 */
 
-$config['meta_desc']		= "Anodyne Productions' premier online RPG management software";
-$config['meta_author']		= "Anodyne Productions";
+$config['meta_desc']		= "Home of the Advanced Science, Technology and Research Activity";
+$config['meta_author']		= "Jon Matterson";
 $config['meta_keywords']	= "nova, rpg management, anodyne, rpg, sms";
 
 /*
