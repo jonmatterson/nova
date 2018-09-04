@@ -23,6 +23,33 @@ $this->event->listen(['location', 'view', 'data', 'main', 'personnel_index'], fu
           }
         }
       }
+      
+      if(!empty($dept['sub'])){
+        foreach($dept['sub'] as $s_id => $sub_dept){
+          if(!empty($sub_dept['pos'])){
+            foreach($sub_dept['pos'] as $p_id => $pos){
+              if(!empty($pos['chars'])){
+                foreach($pos['chars'] as $c_id => $char){
+                  $character = $this->char->get_character($char['char_id']);
+                  if ($character->images > '')
+            			{
+            				// get the images
+            				$images = explode(',', $character->images);
+            				$images_count = count($images);
+            				
+            				$src = (strstr($images[0], 'http://') !== false)
+            					? $images[0]
+            					: base_url().Location::asset('images/characters', trim($images[0]));
+                    $event['data']['depts'][$d_id]['sub'][$s_id]['pos'][$p_id]['chars'][$c_id]['name'] .= '<span data-src="'.$src.'" style="display:none;" class="char_image"></span>';
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      
+      
     }
   }
 });
