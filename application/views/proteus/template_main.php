@@ -48,7 +48,8 @@ $button_login = array(
 	<head>
 		<meta charset="utf-8">
 		<title><?php echo $title;?></title>
-
+		
+		<meta name="og:title" content="<?php echo $title;?>" />
 		<meta name="description" content="<?php echo $this->config->item('meta_desc');?>" />
 		<meta name="og:description" content="<?php echo $this->config->item('meta_desc');?>" />
 		<meta name="keywords" content="<?php echo $this->config->item('meta_keywords');?>" />
