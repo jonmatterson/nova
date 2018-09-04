@@ -17,7 +17,7 @@ $this->event->listen(['location', 'view', 'data', 'main', 'personnel_index'], fu
         				$src = (strstr($images[0], 'http://') !== false)
         					? $images[0]
         					: base_url().Location::asset('images/characters', trim($images[0]));
-                $event['data']['depts'][$d_id]['pos'][$p_id]['chars'][$c_id]['name'] .= '<img src="'.$src.'" style="display:none;" class="char_image">';
+                $event['data']['depts'][$d_id]['pos'][$p_id]['chars'][$c_id]['name'] .= '<span data-src="'.$src.'" style="display:none;" class="char_image"></span>';
               }
             }
           }
@@ -30,9 +30,10 @@ $this->event->listen(['location', 'view', 'data', 'main', 'personnel_index'], fu
 $this->event->listen(['location', 'view', 'output', 'main', 'personnel_index'], function($event){
   $event['output'] .= '<script type="text/javascript">
   $(".char_image").each(function(){
+    var src = $(this).attr("data-src");
     $(this).closest("tr").find("img[src*=\'ranks\']").before(
-      $(this).css("display", "inline-block").css("max-width","120px").css("max-height","120px")
-    ).closest("td").css("text-align","center");
+      $("<div>").css("display","inline-block").css("height","120px").css("width","144px").css("background", "url(\'"+src+"\') 0 0 no-repeat, linear-gradient(to right, #fff, #000 20%)").css("background-blend-mode", "screen").css("background-size", "cover")
+    ).closest("td").css("text-align","right");
   });
   </script>';
 });
