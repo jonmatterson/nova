@@ -1,0 +1,14 @@
+.chronological_mission_posts--sim_readposts {
+  border-top: 1px solid #ddd;
+  padding-top: 12px;
+}
+
+.chronological_mission_posts--sim_readposts--details {
+  font-size: 0.85em;
+  color: #777;
+  margin-bottom: 10px;
+}
+
+.chronological_mission_posts--sim_readposts--details-label {
+  font-weight: bold;
+}
