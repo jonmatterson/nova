@@ -606,6 +606,11 @@ abstract class Nova_characters_model extends CI_Model {
 	
 	public function create_promotion_record($data = '')
 	{
+		if(is_array($data) && empty($data['prom_user']))
+		{
+			$data['prom_user'] = 0;
+		}
+		
 		$query = $this->db->insert('characters_promotions', $data);
 		
 		$this->dbutil->optimize_table('characters_promotions');
@@ -670,6 +675,11 @@ abstract class Nova_characters_model extends CI_Model {
 		$this->db->where('data_field', $field);
 		$this->db->where('data_char', $character);
 		$find = $this->db->get();
+		
+		if(is_array($data) && empty($data['data_user']))
+		{
+			$data['data_user'] = 0;
+		}
 		
 		// if there isn't a record, create it
 		if ($find->num_rows() == 0)
