@@ -166,6 +166,12 @@ abstract class Nova_missions_model extends CI_Model {
 	
 	public function add_mission($data = '')
 	{
+		if(empty($data['mission_start']))
+			$data['mission_start'] = null;
+			
+		if(empty($data['mission_end']))
+			$data['mission_end'] = null;
+			
 		$query = $this->db->insert('missions', $data);
 		
 		$this->dbutil->optimize_table('missions');
@@ -195,6 +201,12 @@ abstract class Nova_missions_model extends CI_Model {
 		{
 			$this->db->where('mission_id', $id);
 		}
+		
+		if(empty($data['mission_start']))
+			$data['mission_start'] = null;
+			
+		if(empty($data['mission_end']))
+			$data['mission_end'] = null;
 		
 		$query = $this->db->update('missions', $data);
 		
