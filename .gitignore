@@ -10,6 +10,7 @@ application/config/database.php
 
 !application/views/default/*
 !application/views/titan/*
+!application/views/khonsu/*
 !application/views/_base_override/*
 
 application/assets/common/*
