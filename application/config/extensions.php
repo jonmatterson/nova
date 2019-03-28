@@ -5,6 +5,7 @@ require_once MODPATH.'core/config/nova_extensions.php';
 // Utility Extensions
 $config['extensions']['enabled'][] = 'jquery';
 $config['extensions']['enabled'][] = 'timepicker';
+$config['extensions']['enabled'][] = 'ci_route_body_class';
 
 // Functionality Extensions
 $config['extensions']['enabled'][] = 'bfms_character';
