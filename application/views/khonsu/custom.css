@@ -1,0 +1,13 @@
+.ci-route--sim--departments #body ul li .fontTiny.gray {
+    display: none;
+}
+
+.ci-route--sim--departments #body ul li .cell-label {
+    width: auto;
+}
+
+@media(min-width: 600px){
+    .ci-route--sim--departments #body ul li .cell-label {
+        white-space: nowrap;
+    }
+}

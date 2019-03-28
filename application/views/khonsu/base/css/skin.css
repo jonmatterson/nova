@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css?family=Righteous');
+
+body {
+  background: #f0f0f0;
+}
+
+header {
+  height: 53px;
+  border-bottom: 1px solid #666;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+#menu .nav-pullout, header {
+    background-color: #292939;
+}
+
+#name {
+    float: left;
+    margin: 17px 0 0 82px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #ddd;
+    text-transform: uppercase;
+}
+
+.signin-container {
+    height: 40px;
+    padding-top: 8px;
+}
+
+.wrapper {
+    margin: 54px 0 0 64px;
+    padding: 0;
+    min-width: 0;
+    max-width: 100%;
+    width: auto;
+    box-sizing: border-box;
+}
+
+.login-wrapper {
+    width: 600px;
+    margin: 50px auto 0 auto;
+}
+
+#menu {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#menu .nav-pullout.open + .nav-overlay {
+    z-index: 98;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    opacity: 0.3;
+}
+
+#menu .nav-pullout {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    border-right: 1px solid #666;
+    width: 64px;
+}
+
+#menu .nav-pullout.open {
+    width: 240px;
+}
+
+#menu .nav-pullout li a {
+    height: 45px;
+    line-height: 45px;
+}
+
+#menu .nav-pullout .icon {
+    margin-left: 10px;
+    margin-right: 10px;
+    text-align: center;
+    font-size: 20px;
+    width: 24px;
+}
+
+#menu .nav-pullout .label {
+    display: none;
+    text-align: left;
+}
+
+#menu .nav-pullout.open .label {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+#menu .nav-pullout span {
+    display: inline-block;
+}
+
+#menu .nav-pullout ul li a {
+    display: block;
+    color: #fff;
+    border-bottom: 1px solid #666;
+    padding: 4px 12px;
+}
+
+#menu .nav-pullout ul li a.active, #menu .nav-main ul li a:hover.active {
+}
+
+#menu .nav-pullout ul li a:hover {
+    border-bottom: 1px solid #666;
+}
+
+#body {
+    border: 0;
+}
+
+#banner {
+    background-color: #000;
+    background-image: url('../images/masthead.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-bottom: 1px solid #708ca8;
+    height: 130px;
+    text-align: center;
+}
+
+.page-head {
+    color: #1c4d77;
+    line-height:1;
+    font-size: 30px;
+}
+.page-head small {
+    font-size: 20px;
+}
+
+.content {
+  padding: 20px;
+  font-size: 15px;
+}
+
+ul.bulleted {
+  list-style: disc;
+  margin-left: 12px;
+  padding-left: 12px;
+  margin-bottom: 12px;
+}
+
+small {
+  font-size: 85%;
+}
+
+.ui-tabs .ui-tabs-nav li.ui-tabs-selected a {
+  background: #258;
+  border-color: #1c4d77;
+}
+
+.ui-tabs .ui-tabs-panel {
+  border-top-color: #1c4d77;
+}
