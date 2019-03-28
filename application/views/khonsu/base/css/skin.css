@@ -18,7 +18,7 @@ header {
     background-color: #292939;
 }
 
-#name {
+#header-name {
     float: left;
     margin: 17px 0 0 82px;
     font-size: 13px;

@@ -66,7 +66,7 @@
 </nav>
 
 <header>
-    <h1 id="name"><?php echo !empty($this->msgs->get_message('khonsu__header_title')) ? $this->msgs->get_message('khonsu__header_title') : $this->options['sim_name'] ?></h1>
+    <h1 id="header-name"><?php echo !empty($this->msgs->get_message('khonsu__header_title')) ? $this->msgs->get_message('khonsu__header_title') : $this->options['sim_name'] ?></h1>
     <div class="signin-container">
         <?php if ( ! Auth::is_logged_in()): ?>
         <?php else: ?>
