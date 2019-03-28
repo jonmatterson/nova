@@ -22,7 +22,7 @@
         $nav_main .= '<li>'
             .'<a href="#" class="nav-pullout-toggle">'
             .'<span class="icon"><i class="fas fa-bars"></i></span>'
-            .'<span class="label">Navigation</span>'
+            .'<span class="label navigation-header">Navigation</span>'
             .'</a>'
             .'</li>';
             
