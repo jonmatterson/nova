@@ -17,9 +17,7 @@
     </div>
     Copyright &copy; 2019 Jon Matterson. Some rights reserved. 
     <br>
-    <?php echo anchor('main/policies/ip', 'Intellectual Property'); ?> -
-    <?php echo anchor('main/policies/dmca', 'DMCA'); ?> -
-    <?php echo anchor('main/policies/privacy', 'Privacy'); ?> -
-    <?php echo anchor('main/policies', 'Policies'); ?> -
-    <?php echo anchor('main/credits', 'Credits');?>
+    <?php echo anchor('main/policies', 'Site Policies'); ?> -
+    <?php echo anchor('main/policies/privacy', 'Privacy Policy'); ?> -
+    <?php echo anchor('main/credits', 'Site Credits');?>
 </footer>

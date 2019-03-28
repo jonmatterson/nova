@@ -11,6 +11,7 @@ $config['extensions']['enabled'][] = 'ci_route_body_class';
 $config['extensions']['enabled'][] = 'bfms_character';
 $config['extensions']['enabled'][] = 'chronological_mission_posts';
 $config['extensions']['enabled'][] = 'manifest_char_images';
+$config['extensions']['enabled'][] = 'dynamic_policies';
 
 // Site Extension
 $config['extensions']['enabled'][] = 'khonsu';

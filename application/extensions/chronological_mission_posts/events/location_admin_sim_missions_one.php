@@ -31,7 +31,7 @@ $this->event->listen(['location', 'view', 'data', 'main', 'sim_missions_one'], f
   
 });
 
-$this->event->listen(['template', 'render', 'data','sim','missions'], function($event){
+$this->event->listen(['template', 'render', 'data', 'sim', 'missions'], function($event){
   $event['data']['javascript'] .= $this->extension['chronological_mission_posts']->inline_css('sim_missions', 'main', $data);
 });
 

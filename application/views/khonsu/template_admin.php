@@ -87,11 +87,8 @@ $button_login = array(
 					<div style="clear:both;"></div>
 				</div>
 
-				<footer>
-					Powered by <strong><?php echo APP_NAME;?></strong> from <a href="http://www.anodyne-productions.com" target="_blank">Anodyne Productions</a> |
-					<?php echo anchor('main/credits', 'Site Credits');?>  |
-					<?php echo anchor('main/policies', 'Privacy Policy'); ?>
-				</footer>
+				<?php include(dirname(__FILE__).'/_template_footer.php'); ?>
+				
 			</div>
 		</div>
 	</body>
