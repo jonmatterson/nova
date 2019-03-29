@@ -30,7 +30,7 @@ $link = array(
 ?><!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php include(dirname(__FILE__).'/_template_head.php'); ?>
+		<?php include(dirname(__FILE__).'/base/includes/_template_head.php'); ?>
 	</head>
 	<body>
 		<section>
@@ -55,7 +55,7 @@ $link = array(
 					
 				</footer>
 				
-				<?php include(dirname(__FILE__).'/_template_footer.php'); ?>
+				<?php include(dirname(__FILE__).'/base/includes/_template_footer.php'); ?>
 				
 			</div>
 		</section>

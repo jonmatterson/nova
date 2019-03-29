@@ -48,7 +48,7 @@ $button_login = array(
 ?><!DOCTYPE html>
 <html lang="en">
 	<head>
-		<?php include(dirname(__FILE__).'/_template_head.php'); ?>
+		<?php include(dirname(__FILE__).'/base/includes/_template_head.php'); ?>
 	</head>
 	<body>
 		<noscript>
@@ -73,7 +73,7 @@ $button_login = array(
 			</div>
 		<?php endif;?>
 		
-		<?php include(dirname(__FILE__).'/_template_header.php'); ?>
+		<?php include(dirname(__FILE__).'/base/includes/_template_header.php'); ?>
 
 		<div class="wrapper">
 			<div id="body">
@@ -89,7 +89,7 @@ $button_login = array(
 					<div style="clear:both;"></div>
 				</div>
 
-				<?php include(dirname(__FILE__).'/_template_footer.php'); ?>
+				<?php include(dirname(__FILE__).'/base/includes/_template_footer.php'); ?>
 				
 			</div>
 		</div>

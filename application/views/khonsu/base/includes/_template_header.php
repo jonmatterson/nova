@@ -2,7 +2,7 @@
     <div class="nav-pullout">
         <?php 
         
-        include(dirname(__FILE__).'/config.php');
+        include(dirname(__FILE__).'/../../config.php');
         
         preg_match_all('/<li>(.*?)<\/li>/', $nav_main, $matches);
         $lis = $matches[1];
