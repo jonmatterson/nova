@@ -1,21 +1,16 @@
 <nav id="menu">
     <div class="nav-pullout">
         <?php 
+        
+        include(dirname(__FILE__).'/config.php');
+        
         preg_match_all('/<li>(.*?)<\/li>/', $nav_main, $matches);
         $lis = $matches[1];
         
-        $iconMatches = [
-            'main/index' => 'fas fa-home',
-            'personnel/index' => 'fas fa-users',
-            'sim/index' => 'fas fa-book-open',
-            'wiki/index' => 'fas fa-database',
-            'search/index' => 'fas fa-search',
-            'admin/index' => 'fas fa-tools',
-            'login/logout' => 'fas fa-sign-out-alt',
-            'login/index' => 'fas fa-sign-in-alt'
-        ];
+        // first match wins
+        $iconMatches = $KHONSU__ICON_MATCHES;
         
-        $iconDefaultClasses = 'fas fa-external-link-alt';
+        $iconDefaultClasses = $KHONSU__ICON_DEFAULT;
         
         $nav_main = '<ul>';
         
