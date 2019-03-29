@@ -31,10 +31,13 @@ $uiTheme = ( ! is_file(APPPATH .'views/'.$current_skin.'/wiki/css/jquery.ui.them
 			@import url("<?php echo $modFolder.'assets/js/markitup/skins/simple/style.css';?>");
 			@import url("<?php echo $modFolder.'assets/js/markitup/sets/'. $parse .'/style.css';?>");
 			
-			#wrapper ul, #wrapper ol { margin: 0 10px 10px 10px; padding: 0 0 0 10px; }
-			#wrapper ul li, #wrapper ol li { margin: 2px; }
-			#wrapper ul { list-style: disc; }
-			#wrapper ol { list-style: decimal; }
+			.content ul:not(.ui-tabs-nav), .content ol:not(.ui-tabs-nav) { margin: 0 10px 10px 10px; padding: 0 0 0 10px; }
+			.content ul:not(.ui-tabs-nav) li, .content ol:not(.ui-tabs-nav) li { margin: 2px; }
+			.content ul:not(.ui-tabs-nav) { list-style: disc; }
+			.content ol:not(.ui-tabs-nav) { list-style: decimal; }
+			
+			.content .wiki-subnav ul, .content .wiki-subnav ol { list-style: none; margin: 0; padding: 4px 0 5px 0; }
+			.wiki-subnav { height: 40px; }
 			
 			.panel-handle ul, .panel-handle ol, .panel-body ul { margin: 0; padding: 0; list-style: none; }
 			.panel-handle ul li, .panel-handle ol li { margin: 0; }
