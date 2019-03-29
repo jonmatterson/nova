@@ -17,7 +17,8 @@
 <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 
-<?php include_once($this->config->item('include_head_main'));?>
+
+<?php include_once(dirname(__FILE__).'/_template_head_'.$KHONSU__TEMPLATE_CONTEXT.'.php'); ?>
 
 <script type="text/javascript" src="<?php echo base_url() . APPFOLDER;?>/views/<?php echo $current_skin;?>/jquery.blockUI.js"></script>
 

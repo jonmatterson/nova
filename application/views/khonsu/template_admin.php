@@ -1,5 +1,7 @@
 <?php
 
+$KHONSU__TEMPLATE_CONTEXT = 'admin';
+
 $sec = 'admin';
 $css = 'main.css';
 

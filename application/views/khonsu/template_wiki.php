@@ -1,5 +1,7 @@
 <?php
 
+$KHONSU__TEMPLATE_CONTEXT = 'wiki';
+
 $sec = 'wiki';
 $css = 'main.css';
 
