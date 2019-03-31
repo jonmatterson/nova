@@ -79,7 +79,7 @@ class __extensions__chronological_mission_posts__sim extends Nova_controller_mai
       }
       
       $this->_regions['javascript'] .= $this->extension['chronological_mission_posts']->inline_css('sim_readposts', 'main', $data);
-      $this->_regions['title'] .= 'Abc';
+      $this->_regions['title'] .= 'Read Story';
   		$this->_regions['content'] = $this->extension['chronological_mission_posts']
                                         ->view('sim_readposts', $this->skin, 'main', $data);
                                         

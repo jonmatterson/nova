@@ -27,8 +27,6 @@ $this->event->listen(['location', 'view', 'data', 'main', 'sim_missions_one'], f
     }
   }
   
-  $this->extension['jquery']['generator']->select('.page-head')->first()->after('aaa');
-  
 });
 
 $this->event->listen(['template', 'render', 'data', 'sim', 'missions'], function($event){
