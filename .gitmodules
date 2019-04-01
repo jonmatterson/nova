@@ -1,0 +1,21 @@
+[submodule "application/extensions/jquery"]
+	path = application/extensions/jquery
+	url = git@jonmatterson.github.com:jonmatterson/nova-ext-jquery.git
+[submodule "application/extensions/timepicker"]
+	path = application/extensions/timepicker
+	url = git@jonmatterson.github.com:jonmatterson/nova-ext-timepicker.git
+[submodule "application/extensions/manifest_char_images"]
+	path = application/extensions/manifest_char_images
+	url = git@jonmatterson.github.com:jonmatterson/nova-ext-manifest_char_images.git
+[submodule "application/extensions/dynamic_policies"]
+	path = application/extensions/dynamic_policies
+	url = git@jonmatterson.github.com:jonmatterson/nova-ext-dynamic_policies.git
+[submodule "application/extensions/ci_route_body_class"]
+	path = application/extensions/ci_route_body_class
+	url = git@jonmatterson.github.com:jonmatterson/nova-ext-ci_route_body_class.git
+[submodule "application/extensions/chronological_mission_posts"]
+	path = application/extensions/chronological_mission_posts
+	url = git@jonmatterson.github.com:jonmatterson/nova-ext-chronological_mission_posts.git
+[submodule "application/extensions/bfms_character"]
+	path = application/extensions/bfms_character
+	url = git@jonmatterson.github.com:jonmatterson/nova-ext-bfms_character.git
