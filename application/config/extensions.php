@@ -15,3 +15,7 @@ $config['extensions']['enabled'][] = 'dynamic_policies';
 
 // Site Extension
 $config['extensions']['enabled'][] = 'khonsu';
+
+$config['extensions']['manifest_char_images'] = [
+    'blend' => 'white'
+];
