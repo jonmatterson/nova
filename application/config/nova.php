@@ -58,7 +58,7 @@ $config['include_head_login']	= MODFOLDER.'/assets/include_head_login.php';
 | a simple Google search from your web browser.
 */
 
-$config['meta_desc']		= "A Star Trek collaborative writing group harkening back to the exploratory spirit of The Next Generation, set in the Gamma Quadrant of 2389, and drawing on themes from history, modernity, and great sci-fi space operas.";
+$config['meta_desc']		= "A Star Trek sim collaboratively writing the story of the USS Khonsu, an Excalibur-class vessel attached to Bravo Fleet's Task Force 9. Home to the Advanced Science, Technology & Research Activity and the Federation's Gamma Quadrant Mission-at-Large, the story of the Khonsu harkens back to the exploratory spirit of early Star Trek while drawing on themes from history, modernity, and great sci-fi space operas.";
 $config['meta_author']		= "Jon Matterson";
 $config['meta_keywords']	= "star trek, writing, simming, bravo fleet, scifi, deep space 9, space opera";
 
