@@ -58,9 +58,9 @@ $config['include_head_login']	= MODFOLDER.'/assets/include_head_login.php';
 | a simple Google search from your web browser.
 */
 
-$config['meta_desc']		= "Anodyne Productions' premier online RPG management software";
-$config['meta_author']		= "Anodyne Productions";
-$config['meta_keywords']	= "nova, rpg management, anodyne, rpg, sms";
+$config['meta_desc']		= "A Star Trek collaborative writing group harkening back to the exploratory spirit of The Next Generation, set in the Gamma Quadrant of 2389, and drawing on themes from history, modernity, and great sci-fi space operas.";
+$config['meta_author']		= "Jon Matterson";
+$config['meta_keywords']	= "star trek, writing, simming, bravo fleet, scifi, deep space 9, space opera";
 
 /*
 | -------------------------------------------------------------------
@@ -72,9 +72,9 @@ $config['meta_keywords']	= "nova, rpg management, anodyne, rpg, sms";
 
 $config['rss_num_entries']		= 25;
 $config['rss_encoding']			= 'utf-8';
-$config['rss_description']		= "Nova, Anodyne Productions' premier RPG management software";
+$config['rss_description']		= "A Star Trek collaborative writing group part of Bravo Fleet's Task Force 9";
 $config['rss_feed_lang']		= 'en-us';
-$config['rss_creator_email']	= 'john.doe@example.com';
+$config['rss_creator_email']	= 'jon.matterson@gmail.com';
 
 /** DO NOT EDIT BELOW THIS LINE! **/
 define('GENRE', strtolower($config['genre']));
