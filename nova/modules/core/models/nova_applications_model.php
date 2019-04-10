@@ -43,6 +43,11 @@ abstract class Nova_applications_model extends CI_Model {
 	
 	public function insert_application($data = '')
 	{
+		if(is_array($data) && empty($data['app_user']))
+		{
+			$data['app_user'] = 0;
+		}
+		
 		$query = $this->db->insert('applications', $data);
 		
 		$this->dbutil->optimize_table('applications');
